@@ -1,0 +1,10 @@
+{
+  "name": "yadira-19",
+  "version": "0.1.0",
+  "private": true,
+  "description": "YADIRA — 19: Our Grand Line",
+  "scripts": {
+    "start": "python -m http.server 5173 --bind 127.0.0.1",
+    "check": "node --check src/scripts/main.js"
+  }
+}
