@@ -3,9 +3,10 @@
 ## Estado del proyecto
 
 - **YADIRA-001 — Opening Experience:** aprobado. Se conservan su diseño, CSS, JavaScript, partículas y tiempos.
-- **YADIRA-002 — The Journey Begins:** aprobado, conservado sin rediseño.
+- **YADIRA-002 — The Journey Begins:** recorrido aprobado; narrativa de cumpleaños actualizada en YADIRA-005.
 - **YADIRA-003 — Our Grand Line:** aprobado; se conserva el mapa, la galería y su interacción.
-- **YADIRA-004 — The Treasure:** cierre completo, pendiente de aprobación visual.
+- **YADIRA-004 — The Treasure:** cierre completo.
+- **YADIRA-005 — Visual Polish:** assets integrados, pastel y fuegos artificiales, narrativa revisada; pendiente de aprobación visual.
 
 Los capítulos se conectan por eventos. Journey se monta dentro de `#experience` al recibir `yadira:opening-complete`; Our Grand Line se monta dentro de `#grand-line` al recibir `yadira:journey-start`. Treasure se monta dentro de `#treasure` al recibir `yadira:grand-line-complete`. No se utiliza audio, video, micrófono, WebGL, Three.js, dependencias de producción ni servicios externos. La galería funciona vacía hasta que se declaren fotografías en `content.js`.
 
@@ -72,11 +73,11 @@ Tras ABRIR REGALO y el interludio aprobado, aparece el océano nocturno. Cada fr
 
 | Frase | Lectura efectiva |
 |---|---:|
-| Hay cosas que se pueden comprar... | 2,5 s |
-| y hay cosas que solamente pueden construirse con tiempo. | 3,7 s |
-| Esta la hice para usted. | 3 s |
-| Hay recuerdos que no deberían quedarse únicamente en nuestra memoria. | 3,9 s |
-| Así que decidí construir un lugar para guardarlos. | 3,5 s |
+| Hoy celebramos sus 19. | 2,5 s |
+| Y no podría estar más feliz de vivir este día a su lado. | 4,2 s |
+| Este regalo está hecho con mi tiempo y todo mi cariño. | 4,2 s |
+| Para celebrar los momentos que compartimos. | 3,5 s |
+| Y la ilusión de seguir creando recuerdos juntos. | 3,7 s |
 | Bienvenida a nuestra Grand Line. | 4,3 s |
 
 Cada frase entra en 550 ms y sale en 450 ms. Después aparece el Log Pose: iluminación interior, búsqueda de 4,3 segundos con correcciones y dirección final de 44° hacia arriba/derecha. Un pulso precede a DESTINO ENCONTRADO, OUR GRAND LINE y COMENZAR VIAJE. El indicador de ruta muestra únicamente el punto de partida.
@@ -102,7 +103,8 @@ Los estados de `.journey-stage` son `ocean`, `narrative`, `searching`, `found`, 
 La configuración está en **`src/scripts/content.js`**, mediante `window.YADIRA_CONTENT`. No hay que modificar el HTML ni el código que renderiza las secciones.
 
 - `timeline`: título, fecha, texto, ruta de imagen y descripción alternativa de cada momento. Las fechas son texto libre. Dejar `date`, `text` o `image` en `""` omite ese campo del recuerdo.
-- `yadira`: título, introducción, seis frases y cierre. Los textos iniciales son exclusivamente los autorizados en la tarea.
+- `journey`: las seis frases del viaje y sus tiempos de lectura.
+- `yadira`: título, introducción, ocho frases y cierre. Los textos iniciales son exclusivamente los autorizados en la tarea.
 - `gallery`: una entrada por fotografía, con `src`, `alt`, `caption` y `story`.
 - `history`, `memories` y `navigation`: títulos, subtítulos y etiquetas.
 
@@ -116,7 +118,7 @@ gallery: [
 
 No se escanea `fotos/`, por lo que funciona en hosting estático como GitHub Pages. Las imágenes del álbum utilizan `loading="lazy"` y mantienen su proporción. El visor utiliza `object-fit: contain`. Una imagen que no puede cargarse se retira de la interfaz; si ninguna carga, permanece la composición decorativa. Una ruta inexistente puede generar un 404 en la consola del navegador: hay que corregirla en `content.js`.
 
-La configuración entregada no incluye fotografías ni fechas inventadas. El único texto personal inicial de los momentos es el autorizado para «Una tarde cualquiera».
+La configuración entregada no incluye fotografías ni fechas inventadas. Los momentos «Una tarde cualquiera» y «Hoy, sus 19» tienen textos autorizados sobre los recuerdos y el cumpleaños.
 
 ## YADIRA-003: interacción y salida
 
@@ -164,13 +166,13 @@ Todo el contenido del cierre está en **`window.YADIRA_CONTENT.treasure`**, dent
 - `birthday`: edad, nombre, felicitación, instrucción de las velas y confirmación del deseo.
 - `ending`: imagen, descripción alternativa, líneas finales, fecha, firma, autor, año, TO BE CONTINUED y reinicio.
 
-Las fotografías `wanted.image` y `ending.image` vienen vacías. Para configurarlas usa rutas como `fotos/nombre.jpg`. Se solicitan al revelar su escena y no aparecen hasta cargar correctamente. Si faltan o fallan, el Wanted mantiene su monograma y el final funciona con texto. Se usa `object-fit: contain`, sin recortar retratos.
+Las fotografías `wanted.image` y `ending.image` vienen vacías. Para configurarlas usa rutas como `fotos/nombre.jpg`. Se solicitan al revelar su escena y no aparecen hasta cargar correctamente. Si faltan o fallan, el Wanted mantiene su monograma y el final funciona con texto. El retrato del Wanted utiliza `object-fit: cover` y `object-position: center 35%` dentro del marco; el final mantiene `contain`, sin recortar.
 
 **Flujo:** el evento `yadira:grand-line-complete` monta el cierre en una microtarea, conservando la entrega vacía observable por otros listeners. ENCONTRAR A ZORO muestra una búsqueda breve, el gag y un Wanted original en HTML/CSS. La paleta verde se limita al primer tramo. El cartel conduce por scroll al sobre.
 
 ABRIR CARTA abre el sobre y revela una carta en el flujo del documento, con scroll natural. Se puede cerrar mediante Cerrar carta o Escape y volver a abrir. El foco vuelve al botón original. CONTINUAR inicia la revelación de 19, YADIRA, la felicitación y un pastel original de CSS con dos velas numéricas.
 
-El pastel es un botón accesible por teclado y táctil. Al activarlo se bloquea, apaga las llamas y muestra humo y cuatro estrellas discretas. «Deseo guardado. ✦» permanece 2,3 segundos antes del fundido al final. La ruta aparece completamente recorrida. Volver al inicio recarga la página y reinicia todos los capítulos.
+El pastel es un botón accesible por teclado y táctil. Al activarlo se bloquea, apaga las llamas y muestra humo, cuatro estrellas discretas y tres fuegos artificiales de corta duración. «Deseo guardado. ✦» permanece 2,3 segundos antes del fundido al final. La ruta aparece completamente recorrida. Volver al inicio recarga la página y reinicia todos los capítulos.
 
 Las animaciones respetan movimiento reducido. Las transiciones instantáneas incluyen una breve guarda de 300 ms antes de habilitar los controles recién aparecidos, para que el segundo toque de una doble pulsación no active accidentalmente el siguiente paso. No se accede al micrófono ni se reproduce música.
 
@@ -184,4 +186,36 @@ Si varias suites coinciden, puede iniciarse un servidor local de QA con más cap
 
 ## Git
 
-Trabajo actual en `feature/yadira-004-treasure`. Se conservaron los cambios locales de YADIRA-002 y YADIRA-003 que aún estaban pendientes al iniciar la tarea. No se hace staging, commit ni push. Las carpetas `onepiece/` y `fotos/` permanecen intactas.
+Trabajo actual en `feature/yadira-005-release`, la rama ya seleccionada al recibir el paquete. La implementación anterior ya estaba versionada; los dos nuevos JPG del usuario estaban sin seguimiento. No se hace staging, commit ni push. Las carpetas `onepiece/` y `fotos/` permanecen intactas.
+
+## YADIRA-005 — Assets y narrativa
+
+Se detectaron y se utilizan los tres archivos de `onepiece/` sin cambiar un solo byte:
+
+| Archivo | Uso | SHA-256 |
+|---|---|---|
+| `Logo one piece.png` | Logo ambiental del Opening, conservado | `206E75F1CD4F177F730DBB13FB7DDF166E40298D579A1F9E8FFE18140364E368` |
+| `cartel.jpg` | Base del Wanted | `3D2571723590956634575711822AC3B124323B4901FF74063C6CA8C779DF42BD` |
+| `logo zoro.jpg` | Emblema de Zoro | `9AD8B53FC31AB333AFC9ADC298A5C22883D67617C0401282D1FE9A3E544A427B` |
+
+El cartel suministrado contiene una fotografía y datos de Zoro. Paneles opacos de papel creados en CSS cubren los datos del personaje, dejando una composición para Yadira con textos HTML editables. Se conserva el WANTED impreso original; si se edita `wanted.title`, un panel cubre el título impreso y muestra el nuevo texto. El encabezado HTML permanece accesible en ambos casos. Las posiciones corresponden a esta plantilla concreta de 489 × 720; sustituir la plantilla por otra composición requiere revisar el CSS. Sin foto personal aparece un monograma grabado, un marco y una estrella. La foto futura ocupa exactamente ese marco. No se ha creado ni alterado ningún archivo de imagen.
+
+`treasure.wanted.template` configura la base; `treasure.zoro.image` configura el emblema. El JPG de Zoro se integra mediante inversión y escala de grises por CSS sobre una iluminación verde tenue. Los archivos originales conservan sus colores. Si cualquiera de estos assets no carga, permanecen las composiciones CSS/SVG anteriores.
+
+El pastel tiene dos niveles, acabado marfil/violeta, detalles dorados y velas numéricas más grandes. Al apagarlas aparecen tres fuegos artificiales con 36 rayos en total, animados una sola vez con opacity/transform durante 1,6 segundos y desfases de hasta 0,7 segundos. Con movimiento reducido aparecen destellos estáticos pequeños y tenues. No hay bucle de render, librerías nuevas ni audio.
+
+La narrativa se revisó en HTML y todos los scripts: Opening, viaje, sección de Yadira, recuerdo del cumpleaños, álbum, Wanted, carta y final. El foco es Yadira y Edwin, sus 19 años, el tiempo dedicado al regalo y los recuerdos juntos. La carta sigue siendo provisional y editable; no se inventaron fechas ni historias adicionales. La referencia temática de Zoro conserva su gag.
+
+### Personalización posterior
+
+- Foto del Wanted: guardar manualmente, por ejemplo, `fotos/yadira-wanted.jpg` y usar esa ruta en `treasure.wanted.image`.
+- Foto del final: `treasure.ending.image`, por ejemplo `fotos/nuestro-recuerdo.jpg`.
+- Álbum: entradas `gallery` con `src`, `alt`, `caption` y `story`.
+- Recuerdos del mapa: `timeline[].image` y `alt`.
+- Carta provisional: `treasure.letter.body`, un párrafo por entrada.
+
+Esos nombres son ejemplos, no archivos añadidos. Todas las rutas son relativas a `index.html`, compatibles con un subdirectorio de GitHub Pages. `fotos/` permanece intacta.
+
+### Verificación del pulido
+
+La suite Treasure ahora comprueba carga del emblema y de la plantilla, Wanted vacío y con retrato virtual, pastel de al menos 300 px de ancho, fuegos artificiales visibles y su variante sin animación, además de las interacciones previas. Journey y Grand Line comprueban los textos y tiempos actualizados. Las capturas siguen en `qa/*.png`, excluidas de Git.

@@ -1,6 +1,6 @@
 {
   "package": "YADIRA-002",
-  "checkedAt": "2026-09-29T21:44:08.016Z",
+  "checkedAt": "2026-09-29T22:11:46.028Z",
   "browser": "154.0.4258.37",
   "logoSHA256": "206e75f1cd4f177f730dbb13fb7ddf166e40298d579a1f9e8ffe18140364e368",
   "results": [
@@ -10,20 +10,20 @@
       "automatic": false,
       "status": "PASS",
       "phrases": [
-        "Hay cosas que se pueden comprar...",
-        "y hay cosas que solamente pueden construirse con tiempo.",
-        "Esta la hice para usted.",
-        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
-        "Así que decidí construir un lugar para guardarlos.",
+        "Hoy celebramos sus 19.",
+        "Y no podría estar más feliz de vivir este día a su lado.",
+        "Este regalo está hecho con mi tiempo y todo mi cariño.",
+        "Para celebrar los momentos que compartimos.",
+        "Y la ilusión de seguir creando recuerdos juntos.",
         "Bienvenida a nuestra Grand Line."
       ],
       "readingMs": [
-        157,
-        141,
-        141,
+        158,
+        142,
         139,
-        136,
-        136
+        153,
+        138,
+        142
       ],
       "noOverflow": true,
       "controlsFit": true,
@@ -42,20 +42,20 @@
       "automatic": true,
       "status": "PASS",
       "phrases": [
-        "Hay cosas que se pueden comprar...",
-        "y hay cosas que solamente pueden construirse con tiempo.",
-        "Esta la hice para usted.",
-        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
-        "Así que decidí construir un lugar para guardarlos.",
+        "Hoy celebramos sus 19.",
+        "Y no podría estar más feliz de vivir este día a su lado.",
+        "Este regalo está hecho con mi tiempo y todo mi cariño.",
+        "Para celebrar los momentos que compartimos.",
+        "Y la ilusión de seguir creando recuerdos juntos.",
         "Bienvenida a nuestra Grand Line."
       ],
       "readingMs": [
-        2518,
+        2512,
+        4216,
+        4216,
+        3518,
         3717,
-        3017,
-        3918,
-        3513,
-        4316
+        4304
       ],
       "noOverflow": true,
       "controlsFit": true,
@@ -74,20 +74,20 @@
       "automatic": false,
       "status": "PASS",
       "phrases": [
-        "Hay cosas que se pueden comprar...",
-        "y hay cosas que solamente pueden construirse con tiempo.",
-        "Esta la hice para usted.",
-        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
-        "Así que decidí construir un lugar para guardarlos.",
+        "Hoy celebramos sus 19.",
+        "Y no podría estar más feliz de vivir este día a su lado.",
+        "Este regalo está hecho con mi tiempo y todo mi cariño.",
+        "Para celebrar los momentos que compartimos.",
+        "Y la ilusión de seguir creando recuerdos juntos.",
         "Bienvenida a nuestra Grand Line."
       ],
       "readingMs": [
-        401,
-        589,
-        279,
-        399,
-        281,
-        183
+        139,
+        146,
+        171,
+        188,
+        142,
+        119
       ],
       "noOverflow": true,
       "controlsFit": true,
@@ -106,20 +106,20 @@
       "automatic": false,
       "status": "PASS",
       "phrases": [
-        "Hay cosas que se pueden comprar...",
-        "y hay cosas que solamente pueden construirse con tiempo.",
-        "Esta la hice para usted.",
-        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
-        "Así que decidí construir un lugar para guardarlos.",
+        "Hoy celebramos sus 19.",
+        "Y no podría estar más feliz de vivir este día a su lado.",
+        "Este regalo está hecho con mi tiempo y todo mi cariño.",
+        "Para celebrar los momentos que compartimos.",
+        "Y la ilusión de seguir creando recuerdos juntos.",
         "Bienvenida a nuestra Grand Line."
       ],
       "readingMs": [
-        423,
-        612,
-        318,
-        355,
-        325,
-        216
+        143,
+        178,
+        205,
+        177,
+        160,
+        126
       ],
       "noOverflow": true,
       "controlsFit": true,
@@ -138,20 +138,20 @@
       "automatic": false,
       "status": "PASS",
       "phrases": [
-        "Hay cosas que se pueden comprar...",
-        "y hay cosas que solamente pueden construirse con tiempo.",
-        "Esta la hice para usted.",
-        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
-        "Así que decidí construir un lugar para guardarlos.",
+        "Hoy celebramos sus 19.",
+        "Y no podría estar más feliz de vivir este día a su lado.",
+        "Este regalo está hecho con mi tiempo y todo mi cariño.",
+        "Para celebrar los momentos que compartimos.",
+        "Y la ilusión de seguir creando recuerdos juntos.",
         "Bienvenida a nuestra Grand Line."
       ],
       "readingMs": [
-        250,
-        46,
-        159,
+        57,
         56,
-        51,
-        53
+        74,
+        75,
+        35,
+        73
       ],
       "noOverflow": true,
       "controlsFit": true,
@@ -170,20 +170,20 @@
       "automatic": true,
       "status": "PASS",
       "phrases": [
-        "Hay cosas que se pueden comprar...",
-        "y hay cosas que solamente pueden construirse con tiempo.",
-        "Esta la hice para usted.",
-        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
-        "Así que decidí construir un lugar para guardarlos.",
+        "Hoy celebramos sus 19.",
+        "Y no podría estar más feliz de vivir este día a su lado.",
+        "Este regalo está hecho con mi tiempo y todo mi cariño.",
+        "Para celebrar los momentos que compartimos.",
+        "Y la ilusión de seguir creando recuerdos juntos.",
         "Bienvenida a nuestra Grand Line."
       ],
       "readingMs": [
-        2500,
-        3689,
-        2968,
-        3883,
-        3493,
-        4278
+        2518,
+        4187,
+        4191,
+        3491,
+        3691,
+        4308
       ],
       "noOverflow": true,
       "controlsFit": true,

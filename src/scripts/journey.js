@@ -3,14 +3,7 @@
 // YADIRA-002 is mounted only after the approved Opening hands off control.
 (() => {
   const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
-  const phrases = [
-    { text: "Hay cosas que se pueden comprar...", hold: 2500 },
-    { text: "y hay cosas que solamente pueden construirse con tiempo.", hold: 3700 },
-    { text: "Esta la hice para usted.", hold: 3000, emphasis: "personal" },
-    { text: "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.", hold: 3900 },
-    { text: "Así que decidí construir un lugar para guardarlos.", hold: 3500 },
-    { text: "Bienvenida a nuestra Grand Line.", hold: 4300, emphasis: "welcome" },
-  ];
+  const phrases = window.YADIRA_CONTENT.journey;
   const pause = (ms) => new Promise((resolve) => window.setTimeout(resolve, ms));
   let mounted = false;
 

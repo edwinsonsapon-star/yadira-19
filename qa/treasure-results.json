@@ -1,6 +1,6 @@
 {
-  "package": "YADIRA-004",
-  "checkedAt": "2026-09-29T21:45:02.359Z",
+  "package": "YADIRA-005",
+  "checkedAt": "2026-09-29T22:14:01.324Z",
   "browser": "154.0.4258.37",
   "results": [
     {
@@ -10,7 +10,10 @@
       "fixture": false,
       "status": "PASS",
       "zoro": true,
+      "zoroAssetLoaded": true,
       "wanted": true,
+      "wantedTemplateLoaded": true,
+      "fireworks": true,
       "letterCloseMethods": [
         "button",
         "Escape"
@@ -31,7 +34,10 @@
       "fixture": false,
       "status": "PASS",
       "zoro": true,
+      "zoroAssetLoaded": true,
       "wanted": true,
+      "wantedTemplateLoaded": true,
+      "fireworks": true,
       "letterCloseMethods": [
         "button",
         "Escape"
@@ -52,7 +58,10 @@
       "fixture": false,
       "status": "PASS",
       "zoro": true,
+      "zoroAssetLoaded": true,
       "wanted": true,
+      "wantedTemplateLoaded": true,
+      "fireworks": true,
       "letterCloseMethods": [
         "button",
         "Escape"
@@ -73,7 +82,10 @@
       "fixture": false,
       "status": "PASS",
       "zoro": true,
+      "zoroAssetLoaded": true,
       "wanted": true,
+      "wantedTemplateLoaded": true,
+      "fireworks": true,
       "letterCloseMethods": [
         "button",
         "Escape"
@@ -94,7 +106,10 @@
       "fixture": false,
       "status": "PASS",
       "zoro": true,
+      "zoroAssetLoaded": true,
       "wanted": true,
+      "wantedTemplateLoaded": true,
+      "fireworks": true,
       "letterCloseMethods": [
         "button",
         "Escape"
@@ -115,7 +130,10 @@
       "fixture": false,
       "status": "PASS",
       "zoro": true,
+      "zoroAssetLoaded": true,
       "wanted": true,
+      "wantedTemplateLoaded": true,
+      "fireworks": true,
       "letterCloseMethods": [
         "button",
         "Escape"
@@ -136,7 +154,10 @@
       "fixture": true,
       "status": "PASS",
       "zoro": true,
+      "zoroAssetLoaded": true,
       "wanted": true,
+      "wantedTemplateLoaded": true,
+      "fireworks": true,
       "letterCloseMethods": [
         "button",
         "Escape"

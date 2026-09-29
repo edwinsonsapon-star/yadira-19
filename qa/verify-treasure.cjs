@@ -2,6 +2,7 @@ const {chromium} = require('playwright');
 const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const {createHash}=require('node:crypto');
 const base = process.env.YADIRA_QA_URL || 'http://127.0.0.1:5173';
 const cases = [[390,844,false,true],[360,640],[430,932],[768,1024],[1440,900],[390,844,true]];
 const results=[];
@@ -22,6 +23,10 @@ async function load(browser,w,h,reduced=false,integration=false,fixture=false) {
   await page.addInitScript(()=>{window.treasureEntries=[];document.addEventListener('yadira:grand-line-complete',e=>window.treasureEntries.push({detail:e.detail,empty:document.querySelector('#treasure').innerHTML===''}));});
   if(fixture) await page.route('**/qa/fixtures/treasure.svg',r=>r.fulfill({status:200,contentType:'image/svg+xml',body:'<svg xmlns="http://www.w3.org/2000/svg" width="480" height="720"><rect width="480" height="720" fill="#273951"/><circle cx="240" cy="270" r="140" fill="#9480a8"/><path d="M0 600L480 380V720H0Z" fill="#c9b07e"/></svg>'}));
   await page.goto(base,{waitUntil:'networkidle'});
+  const narrative=await page.evaluate(()=>JSON.stringify(window.YADIRA_CONTENT));
+  assert.doesNotMatch(narrative,/muchas personas|conocer partes|otros conocen|versión favorita|relaciones pasadas/i);
+  assert.match(narrative,/Hoy celebramos sus 19/);
+  assert.match(narrative,/Sobre todo, espero hacerla muy feliz/);
   await page.evaluate(({integration,fixture})=>{
     document.querySelector('#opening').hidden=true;
     document.querySelector('.atmosphere').hidden=true;
@@ -45,7 +50,9 @@ async function run(browser,w,h,reduced=false,integration=false,fixture=false){
   const desktop=w===1440&&!fixture;
   const suffix=`${w}x${h}`;
   await bounds(page);
-  if(mobile)await shot(page,'.treasure-zoro',`zoro-${suffix}`);
+  await page.waitForFunction(()=>document.querySelector('.treasure-zoro-image')?.naturalWidth>0);
+  assert.equal(await page.locator('.treasure-swords').isVisible(),false);
+  if(mobile||desktop)await shot(page,'.treasure-zoro',`zoro-${suffix}`);
   await page.locator('.treasure-find').click({clickCount:2,delay:20});
   assert.equal(await page.locator('.treasure-find').isDisabled(),true);
   await page.locator('.treasure-find').dispatchEvent('click');
@@ -54,7 +61,8 @@ async function run(browser,w,h,reduced=false,integration=false,fixture=false){
   assert.match(await page.locator('.treasure-zoro-result').innerText(),/Zoro volvió a perderse/);
   if(mobile)await shot(page,'.treasure-zoro-result',`404-${suffix}`);
   await phase(page,'wanted');
-  if(fixture)await page.waitForFunction(()=>document.querySelector('.wanted-photo')?.naturalWidth===480);
+  await page.waitForFunction(()=>document.querySelector('.wanted-paper[data-template] .wanted-template')?.naturalWidth>0);
+  if(fixture){await page.waitForFunction(()=>document.querySelector('.wanted-photo')?.naturalWidth===480);assert.equal(await page.locator('.wanted-photo').evaluate(el=>getComputedStyle(el).objectFit),'cover');}
   else{assert.equal(await page.locator('.wanted-photo').count(),0);assert.equal(await page.locator('.wanted-monogram').isVisible(),true);}
   assert.match(await page.locator('.wanted-paper').innerText(),/19,000,000/);
   if(mobile||desktop)await shot(page,'.treasure-wanted',`wanted-${suffix}`);
@@ -83,7 +91,8 @@ async function run(browser,w,h,reduced=false,integration=false,fixture=false){
   assert.equal(await page.locator('.treasure-age').innerText(),'19');
   assert.equal(await page.locator('.cake-candle').count(),2);
   await bounds(page);
-  if(mobile)await shot(page,'.treasure-birthday',`birthday-${suffix}`);
+  assert((await page.locator('.treasure-cake').boundingBox()).width>=300);
+  if(mobile||desktop)await shot(page,'.treasure-birthday',`birthday-${suffix}`);
   if(w===1440){await page.locator('.treasure-cake').focus();await page.keyboard.press('Enter');}
   else await page.locator('.treasure-cake').click({clickCount:2,delay:20});
   assert.equal(await page.locator('.treasure-cake').isDisabled(),true);
@@ -91,7 +100,11 @@ async function run(browser,w,h,reduced=false,integration=false,fixture=false){
   await phase(page,'wish-saved');
   assert.equal(await page.locator('.treasure-wish').innerText(),'Deseo guardado. ✦');
   assert.equal(await page.locator('.cake-flame').evaluateAll(items=>items.every(el=>getComputedStyle(el).opacity==='0')),true);
-  if(mobile)await shot(page,'.treasure-birthday',`candles-out-${suffix}`);
+  assert.equal(await page.locator('.treasure-fireworks[data-active] i').count(),36);
+  const bursts=await page.locator('.treasure-firework i').evaluateAll(items=>items.map(el=>({animation:getComputedStyle(el).animationName,opacity:Number(getComputedStyle(el).opacity)})));
+  assert(bursts.some(b=>b.opacity>0),'Fireworks must be visible');
+  assert(bursts.every(b=>reduced?b.animation==='none':b.animation==='treasure-firework'));
+  if(mobile||desktop||reduced)await shot(page,'.treasure-birthday',`candles-out-${suffix}${reduced?'-reduced':''}`);
   await phase(page,'complete');
   if(fixture)await page.waitForFunction(()=>document.querySelector('.treasure-ending-photo')?.naturalWidth===480);
   else assert.equal(await page.locator('.treasure-ending-photo').count(),0);
@@ -110,12 +123,18 @@ async function run(browser,w,h,reduced=false,integration=false,fixture=false){
   assert.equal(await page.locator('#opening').isVisible(),true);
   assert.equal(await page.locator('.gift-button').isEnabled(),true);
   assert.deepEqual(errors,[]);
-  results.push({viewport:suffix,reducedMotion:reduced,integrationFromGrandLine:integration,fixture,status:'PASS',zoro:true,wanted:true,letterCloseMethods:['button','Escape'],longLetter:fixture,birthday:true,wishOnce:true,flamesOut:true,ending:true,restart:true,noHorizontalOverflow:true,errors});
+  results.push({viewport:suffix,reducedMotion:reduced,integrationFromGrandLine:integration,fixture,status:'PASS',zoro:true,zoroAssetLoaded:true,wanted:true,wantedTemplateLoaded:true,fireworks:true,letterCloseMethods:['button','Escape'],longLetter:fixture,birthday:true,wishOnce:true,flamesOut:true,ending:true,restart:true,noHorizontalOverflow:true,errors});
   console.log(`PASS treasure-${suffix}${reduced?'-reduced-motion':''}${fixture?'-fixtures':''}`);
   await page.close();
 }
-(async()=>{const browser=await chromium.launch({channel:'msedge',headless:true});try{
+(async()=>{
+  for(const [file,hash] of Object.entries({
+    'onepiece/Logo one piece.png':'206e75f1cd4f177f730dbb13fb7ddf166e40298d579a1f9e8ffe18140364e368',
+    'onepiece/cartel.jpg':'3d2571723590956634575711822ac3b124323b4901ff74063c6ca8c779df42bd',
+    'onepiece/logo zoro.jpg':'9ad8b53fc31ab333afc9adc298a5c22883d67617c0401282d1fe9a3e544a427b'
+  })) assert.equal(createHash('sha256').update(await fs.readFile(path.join(__dirname,'..',file))).digest('hex'),hash,`Asset changed: ${file}`);
+  const browser=await chromium.launch({channel:'msedge',headless:true});try{
   for(let i=0;i<cases.length;i+=2) await Promise.all(cases.slice(i,i+2).map(test=>run(browser,...test)));
   await run(browser,390,844,false,false,true);
-  await fs.writeFile(path.join(__dirname,'treasure-results.json'),JSON.stringify({package:'YADIRA-004',checkedAt:new Date().toISOString(),browser:await browser.version(),results},null,2)+'\n');
+  await fs.writeFile(path.join(__dirname,'treasure-results.json'),JSON.stringify({package:'YADIRA-005',checkedAt:new Date().toISOString(),browser:await browser.version(),results},null,2)+'\n');
 }finally{await browser.close();}})().catch(error=>{console.error(error);process.exitCode=1;});

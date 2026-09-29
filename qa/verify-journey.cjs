@@ -6,14 +6,14 @@ const { createHash } = require('node:crypto');
 const output = __dirname;
 const baseURL = process.env.YADIRA_QA_URL || 'http://127.0.0.1:5173';
 const phrases = [
-  'Hay cosas que se pueden comprar...',
-  'y hay cosas que solamente pueden construirse con tiempo.',
-  'Esta la hice para usted.',
-  'Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.',
-  'Así que decidí construir un lugar para guardarlos.',
+  'Hoy celebramos sus 19.',
+  'Y no podría estar más feliz de vivir este día a su lado.',
+  'Este regalo está hecho con mi tiempo y todo mi cariño.',
+  'Para celebrar los momentos que compartimos.',
+  'Y la ilusión de seguir creando recuerdos juntos.',
   'Bienvenida a nuestra Grand Line.',
 ];
-const holds = [2500, 3700, 3000, 3900, 3500, 4300];
+const holds = [2500, 4200, 4200, 3500, 3700, 4300];
 const cases = [
   { width: 360, height: 640 }, { width: 390, height: 844, automatic: true },
   { width: 430, height: 932 }, { width: 768, height: 1024 },

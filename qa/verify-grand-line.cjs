@@ -99,8 +99,8 @@ async function capture(page, name) { await page.screenshot({ path: path.join(__d
       assert.equal(await page.locator('.grand-dialog').evaluate(d => d.open), false);
       await revealAt(page, '#la-yadira');
       if (shots) await capture(page, `grand-line-yadira-${suffix}`);
-      assert.equal(await page.locator('.grand-phrase').count(), 6);
-      assert.equal(await page.locator('.grand-closing p').last().innerText(), 'Y esa es mi versión favorita.');
+      assert.equal(await page.locator('.grand-phrase').count(), 8);
+      assert.equal(await page.locator('.grand-closing p').last().innerText(), 'Sobre todo, espero hacerla muy feliz.');
       await revealAt(page, '#mar-de-recuerdos');
       if (shots) await capture(page, `grand-line-gallery-${suffix}`);
       assert.equal(await page.locator('.grand-album img').count(), 0);

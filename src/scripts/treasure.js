@@ -61,6 +61,9 @@
     swords.setAttribute("aria-hidden", "true");
     swords.innerHTML = `<svg viewBox="0 0 150 150" fill="none"><circle cx="75" cy="75" r="60" stroke="currentColor" opacity=".12"/><g stroke="currentColor" stroke-width="1.4"><g transform="rotate(-26 75 75)"><path d="M72 104V27L75 15L78 27V104Z" fill="#99ad8030"/><path d="M66 103H84M72 111H78M72 117H78M72 123H78M72 129H78M72 103V135H78V103"/></g><g transform="rotate(26 75 75)"><path d="M72 104V27L75 15L78 27V104Z" fill="#99ad8030"/><path d="M66 103H84M72 111H78M72 117H78M72 123H78M72 129H78M72 103V135H78V103"/></g><path d="M72 102V22L75 8L78 22V102Z" fill="#bbcaa045"/><path d="M65 102H85M72 108H78M72 114H78M72 120H78M72 126H78M72 102V138H78V102"/></g></svg>`;
     const zoroTitle = make("h2", "", content.zoro.title);
+    const emblem = make("div", "treasure-zoro-emblem");
+    emblem.setAttribute("aria-hidden", "true");
+    photo(emblem, content.zoro, "treasure-zoro-image", swords);
     zoroTitle.id = "treasure-zoro-title";
     const find = button("treasure-button treasure-find", content.zoro.find);
     const searchStatus = make("p", "treasure-search-status");
@@ -75,13 +78,25 @@
     const clue = make("p", "", content.zoro.clue);
     clue.hidden = true;
     gag.append(clue);
-    zoro.append(swords, zoroTitle, make("p", "treasure-zoro-intro", content.zoro.message), find, spinner, searchStatus, gag);
+    zoro.append(swords, emblem, zoroTitle, make("p", "treasure-zoro-intro", content.zoro.message), find, spinner, searchStatus, gag);
 
     const wanted = make("section", "treasure-section treasure-wanted");
     wanted.hidden = true;
     wanted.tabIndex = -1;
     wanted.setAttribute("aria-label", `${content.wanted.title} ${content.wanted.name}`);
     const paper = make("div", "wanted-paper");
+    if (content.wanted.template) {
+      const template = make("img", "wanted-template");
+      template.alt = "";
+      template.setAttribute("aria-hidden", "true");
+      template.addEventListener("load", () => {
+        paper.dataset.template = "";
+        if (content.wanted.title === "WANTED") paper.dataset.printedTitle = "";
+      }, { once: true });
+      template.addEventListener("error", () => template.remove(), { once: true });
+      template.src = content.wanted.template;
+      paper.append(template);
+    }
     const portrait = make("div", "wanted-portrait");
     const monogram = make("div", "wanted-monogram", content.wanted.monogram);
     monogram.setAttribute("aria-hidden", "true");
@@ -134,7 +149,7 @@
     const cake = button("treasure-cake");
     cake.disabled = true;
     cake.setAttribute("aria-label", content.birthday.instruction);
-    cake.innerHTML = `<span class="cake-plate" aria-hidden="true"></span><span class="cake-body" aria-hidden="true"></span><span class="cake-candles" aria-hidden="true"></span><span class="cake-sparks" aria-hidden="true"><i>✧</i><i>✧</i><i>✧</i><i>✧</i></span>`;
+    cake.innerHTML = `<span class="cake-aura" aria-hidden="true"></span><span class="cake-plate" aria-hidden="true"></span><span class="cake-body" aria-hidden="true"></span><span class="cake-top-tier" aria-hidden="true"></span><span class="cake-pearls" aria-hidden="true"></span><span class="cake-candles" aria-hidden="true"></span><span class="cake-sparks" aria-hidden="true"><i>✧</i><i>✧</i><i>✧</i><i>✧</i></span>`;
     for (const digit of String(content.birthday.age)) {
       const candle = make("span", "cake-candle", digit);
       candle.append(make("i", "cake-flame"), make("i", "cake-smoke"));
@@ -143,7 +158,19 @@
     const instruction = make("p", "treasure-instruction", content.birthday.instruction);
     const wish = make("p", "treasure-wish");
     wish.setAttribute("role", "status");
-    birthday.append(age, birthdayName, birthdayTitle, cake, instruction, wish);
+    const fireworks = make("div", "treasure-fireworks");
+    fireworks.setAttribute("aria-hidden", "true");
+    // Three short bursts, 36 rays total. No canvas loop or recurring timers.
+    for (let burst = 0; burst < 3; burst++) {
+      const bloom = make("span", "treasure-firework");
+      for (let ray = 0; ray < 12; ray++) {
+        const spark = make("i");
+        spark.style.setProperty("--angle", `${ray * 30}deg`);
+        bloom.append(spark);
+      }
+      fireworks.append(bloom);
+    }
+    birthday.append(fireworks, age, birthdayName, birthdayTitle, cake, instruction, wish);
 
     const ending = make("section", "treasure-section treasure-ending");
     ending.tabIndex = -1;
@@ -266,6 +293,7 @@
         return animate(flame, [{ opacity: 1, transform: "scale(1)" }, { opacity: .6, transform: "scale(.8) rotate(15deg)" }, { opacity: 0, transform: "scale(.1)" }], 600);
       }));
       cake.dataset.out = "";
+      fireworks.dataset.active = "";
       instruction.hidden = true;
       wish.textContent = content.birthday.wish;
       await show(wish, 450);
