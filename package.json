@@ -5,6 +5,6 @@
   "description": "YADIRA — 19: Our Grand Line",
   "scripts": {
     "start": "python -m http.server 5173 --bind 127.0.0.1",
-    "check": "node --check src/scripts/main.js"
+    "check": "node --check src/scripts/main.js && node --check src/scripts/journey.js && node --check src/scripts/content.js && node --check src/scripts/grand-line.js && node --check src/scripts/treasure.js"
   }
 }

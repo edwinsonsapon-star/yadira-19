@@ -1,0 +1,200 @@
+{
+  "package": "YADIRA-002",
+  "checkedAt": "2026-09-29T21:44:08.016Z",
+  "browser": "154.0.4258.37",
+  "logoSHA256": "206e75f1cd4f177f730dbb13fb7ddf166e40298d579a1f9e8ffe18140364e368",
+  "results": [
+    {
+      "viewport": "360x640",
+      "reducedMotion": false,
+      "automatic": false,
+      "status": "PASS",
+      "phrases": [
+        "Hay cosas que se pueden comprar...",
+        "y hay cosas que solamente pueden construirse con tiempo.",
+        "Esta la hice para usted.",
+        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
+        "Así que decidí construir un lugar para guardarlos.",
+        "Bienvenida a nuestra Grand Line."
+      ],
+      "readingMs": [
+        157,
+        141,
+        141,
+        139,
+        136,
+        136
+      ],
+      "noOverflow": true,
+      "controlsFit": true,
+      "noOverlap": true,
+      "needleAngle": 43.999976784760015,
+      "duplicateActivationBlocked": true,
+      "journeyEvents": 1,
+      "grandLineEmpty": true,
+      "openingHandoffPreserved": true,
+      "errors": [],
+      "screenshot": "journey-360x640.png"
+    },
+    {
+      "viewport": "390x844",
+      "reducedMotion": false,
+      "automatic": true,
+      "status": "PASS",
+      "phrases": [
+        "Hay cosas que se pueden comprar...",
+        "y hay cosas que solamente pueden construirse con tiempo.",
+        "Esta la hice para usted.",
+        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
+        "Así que decidí construir un lugar para guardarlos.",
+        "Bienvenida a nuestra Grand Line."
+      ],
+      "readingMs": [
+        2518,
+        3717,
+        3017,
+        3918,
+        3513,
+        4316
+      ],
+      "noOverflow": true,
+      "controlsFit": true,
+      "noOverlap": true,
+      "needleAngle": 43.999976784760015,
+      "duplicateActivationBlocked": true,
+      "journeyEvents": 1,
+      "grandLineEmpty": true,
+      "openingHandoffPreserved": true,
+      "errors": [],
+      "screenshot": "journey-390x844.png"
+    },
+    {
+      "viewport": "430x932",
+      "reducedMotion": false,
+      "automatic": false,
+      "status": "PASS",
+      "phrases": [
+        "Hay cosas que se pueden comprar...",
+        "y hay cosas que solamente pueden construirse con tiempo.",
+        "Esta la hice para usted.",
+        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
+        "Así que decidí construir un lugar para guardarlos.",
+        "Bienvenida a nuestra Grand Line."
+      ],
+      "readingMs": [
+        401,
+        589,
+        279,
+        399,
+        281,
+        183
+      ],
+      "noOverflow": true,
+      "controlsFit": true,
+      "noOverlap": true,
+      "needleAngle": 43.999976784760015,
+      "duplicateActivationBlocked": true,
+      "journeyEvents": 1,
+      "grandLineEmpty": true,
+      "openingHandoffPreserved": true,
+      "errors": [],
+      "screenshot": "journey-430x932.png"
+    },
+    {
+      "viewport": "768x1024",
+      "reducedMotion": false,
+      "automatic": false,
+      "status": "PASS",
+      "phrases": [
+        "Hay cosas que se pueden comprar...",
+        "y hay cosas que solamente pueden construirse con tiempo.",
+        "Esta la hice para usted.",
+        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
+        "Así que decidí construir un lugar para guardarlos.",
+        "Bienvenida a nuestra Grand Line."
+      ],
+      "readingMs": [
+        423,
+        612,
+        318,
+        355,
+        325,
+        216
+      ],
+      "noOverflow": true,
+      "controlsFit": true,
+      "noOverlap": true,
+      "needleAngle": 43.999976784760015,
+      "duplicateActivationBlocked": true,
+      "journeyEvents": 1,
+      "grandLineEmpty": true,
+      "openingHandoffPreserved": true,
+      "errors": [],
+      "screenshot": "journey-768x1024.png"
+    },
+    {
+      "viewport": "1440x900",
+      "reducedMotion": false,
+      "automatic": false,
+      "status": "PASS",
+      "phrases": [
+        "Hay cosas que se pueden comprar...",
+        "y hay cosas que solamente pueden construirse con tiempo.",
+        "Esta la hice para usted.",
+        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
+        "Así que decidí construir un lugar para guardarlos.",
+        "Bienvenida a nuestra Grand Line."
+      ],
+      "readingMs": [
+        250,
+        46,
+        159,
+        56,
+        51,
+        53
+      ],
+      "noOverflow": true,
+      "controlsFit": true,
+      "noOverlap": true,
+      "needleAngle": 43.999976784760015,
+      "duplicateActivationBlocked": true,
+      "journeyEvents": 1,
+      "grandLineEmpty": true,
+      "openingHandoffPreserved": true,
+      "errors": [],
+      "screenshot": "journey-1440x900.png"
+    },
+    {
+      "viewport": "390x844",
+      "reducedMotion": true,
+      "automatic": true,
+      "status": "PASS",
+      "phrases": [
+        "Hay cosas que se pueden comprar...",
+        "y hay cosas que solamente pueden construirse con tiempo.",
+        "Esta la hice para usted.",
+        "Hay recuerdos que no deberían quedarse únicamente en nuestra memoria.",
+        "Así que decidí construir un lugar para guardarlos.",
+        "Bienvenida a nuestra Grand Line."
+      ],
+      "readingMs": [
+        2500,
+        3689,
+        2968,
+        3883,
+        3493,
+        4278
+      ],
+      "noOverflow": true,
+      "controlsFit": true,
+      "noOverlap": true,
+      "needleAngle": 43.999976784760015,
+      "duplicateActivationBlocked": true,
+      "journeyEvents": 1,
+      "grandLineEmpty": true,
+      "openingHandoffPreserved": true,
+      "errors": [],
+      "screenshot": "journey-390x844-reduced-motion.png"
+    }
+  ]
+}

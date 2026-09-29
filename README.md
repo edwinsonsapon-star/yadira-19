@@ -1,94 +1,187 @@
 # YADIRA — 19: Our Grand Line
 
-## Paquete actual: YADIRA-001 — Opening Experience
+## Estado del proyecto
 
-Una única apertura cinematográfica, mobile-first, con referencia principal de 390 × 844 px. El proyecto avanza por paquetes sujetos a aprobación visual. No se implementa contenido de paquetes posteriores.
+- **YADIRA-001 — Opening Experience:** aprobado. Se conservan su diseño, CSS, JavaScript, partículas y tiempos.
+- **YADIRA-002 — The Journey Begins:** aprobado, conservado sin rediseño.
+- **YADIRA-003 — Our Grand Line:** aprobado; se conserva el mapa, la galería y su interacción.
+- **YADIRA-004 — The Treasure:** cierre completo, pendiente de aprobación visual.
 
-La interfaz presenta exclusivamente:
-
-- PARA / YADIRA / 01 • OCTUBRE • 2026.
-- Ornamento sutil y «Una aventura creada especialmente para usted.»
-- Botón ABRIR REGALO y «Best experienced with sound ♫».
-- El logo original como ambiente, gradientes CSS y 26 partículas discretas.
-
-No se reproduce audio. El texto sobre sonido forma parte del diseño solicitado.
+Los capítulos se conectan por eventos. Journey se monta dentro de `#experience` al recibir `yadira:opening-complete`; Our Grand Line se monta dentro de `#grand-line` al recibir `yadira:journey-start`. Treasure se monta dentro de `#treasure` al recibir `yadira:grand-line-complete`. No se utiliza audio, video, micrófono, WebGL, Three.js, dependencias de producción ni servicios externos. La galería funciona vacía hasta que se declaren fotografías en `content.js`.
 
 ## Abrir localmente
 
-Abre `index.html` directamente, o ejecuta desde la raíz con Python 3:
+Abre `index.html` directamente o, desde la raíz, ejecuta con Python 3:
 
 ```powershell
 python -m http.server 5173 --bind 127.0.0.1
 ```
 
-Visita <http://localhost:5173>. Detén el servidor con `Ctrl+C`. `npm start` ejecuta el mismo servidor; `npm run check` comprueba la sintaxis del JavaScript con Node.js. La aplicación no requiere paquetes, compilación, fuentes remotas ni servicios externos.
+Visita <http://localhost:5173>. `npm start` ejecuta el mismo servidor; `npm run check` valida los cinco scripts con Node.js. Recarga para repetir la experiencia: no hay persistencia del progreso.
 
 ## Estructura
 
 ```text
 yadira/
-├── .git/                         # Repositorio existente
-├── fotos/                        # Originales protegidos; actualmente vacía
-├── onepiece/
-│   └── Logo one piece.png        # Original protegido, sin modificaciones
+├── fotos/.gitkeep                 # Carpeta protegida
+├── onepiece/Logo one piece.png    # Logo original protegido
 ├── src/
-│   ├── scripts/main.js           # Partículas y secuencia de apertura
-│   └── styles/main.css           # Tokens, ambiente, responsive y movimiento
+│   ├── scripts/
+│   │   ├── main.js                # YADIRA-001, intacto
+│   │   ├── journey.js             # YADIRA-002, conservado
+│   │   ├── content.js             # Contenido editable de YADIRA-003 y YADIRA-004
+│   │   ├── grand-line.js          # Mapa, recuerdos, frases, galería y visor
+│   │   └── treasure.js            # Zoro, Wanted, carta, cumpleaños y final
+│   └── styles/
+│       ├── main.css               # YADIRA-001, intacto; tokens compartidos
+│       ├── journey.css            # Océano CSS del segundo capítulo
+│       ├── grand-line.css         # Mapa y álbum del tercer capítulo
+│       └── treasure.css           # Arte y escenas del cierre
 ├── qa/
-│   ├── verify-opening.cjs        # Verificación automatizada en navegador
-│   └── results.json             # Resultados de la última ejecución
+│   ├── verify-opening.cjs         # Regresión aislada de YADIRA-001
+│   ├── verify-journey.cjs          # Regresión de YADIRA-002
+│   ├── verify-grand-line.cjs       # Integración y QA de YADIRA-003
+│   ├── verify-treasure.cjs         # QA de YADIRA-004
+│   ├── results.json               # Informe del Opening
+│   ├── journey-results.json       # Informe del Journey
+│   ├── grand-line-results.json    # Informe de Our Grand Line
+│   └── treasure-results.json      # Informe de The Treasure
 ├── .gitignore
 ├── index.html
 ├── package.json
 └── README.md
 ```
 
-## Logo y archivos protegidos
+Las capturas locales de QA se excluyen mediante `qa/*.png`.
 
-El recurso usado es `onepiece/Logo one piece.png`, referenciado desde HTML como `onepiece/Logo%20one%20piece.png`. La opacidad, el modo de mezcla y la máscara radial son estilos de presentación CSS: no se modifica, renombra, comprime ni reemplaza el archivo. No se realizan escrituras en `onepiece` ni en `fotos`.
+## Archivos protegidos
 
-SHA-256 del logo original:
+No se modifican, mueven ni eliminan contenidos de `onepiece/` o `fotos/`. El recurso original sigue en `onepiece/Logo one piece.png` y el HTML lo carga mediante `onepiece/Logo%20one%20piece.png`.
+
+SHA-256 del logo:
 
 ```text
 206E75F1CD4F177F730DBB13FB7DDF166E40298D579A1F9E8FFE18140364E368
 ```
 
-## Secuencia y contrato de integración
+El Log Pose es un SVG original construido por el código: esfera, reflejos, anillos, soporte, base metálica y aguja. No utiliza imágenes oficiales.
 
-Entrada: ambiente → logo → PARA → YADIRA → fecha → ornamento → frase → botón. Las animaciones usan principalmente opacidad y transformaciones, con desenfoque leve durante la entrada.
+## Secuencia y tiempos
 
-Al activar ABRIR REGALO, el botón se deshabilita inmediatamente y una guarda bloquea activaciones repetidas. Sigue una pequeña reacción visual de presión, aumento de luz, salida de la apertura y aparición de «Toda gran aventura comienza con un primer paso.». El mensaje se mantiene 2,2 segundos completamente visible y se desvanece junto con el ambiente.
+Tras ABRIR REGALO y el interludio aprobado, aparece el océano nocturno. Cada frase se muestra individualmente; «Continuar» permite adelantar solamente la frase actual, sin acumular saltos durante las transiciones. Si no se interactúa, la secuencia avanza sola.
 
-Al terminar:
+| Frase | Lectura efectiva |
+|---|---:|
+| Hay cosas que se pueden comprar... | 2,5 s |
+| y hay cosas que solamente pueden construirse con tiempo. | 3,7 s |
+| Esta la hice para usted. | 3 s |
+| Hay recuerdos que no deberían quedarse únicamente en nuestra memoria. | 3,9 s |
+| Así que decidí construir un lugar para guardarlos. | 3,5 s |
+| Bienvenida a nuestra Grand Line. | 4,3 s |
 
-1. La apertura, el interludio y el ambiente quedan ocultos.
-2. Se muestra y enfoca `#experience`, que permanece literalmente vacío.
-3. Se emite **una sola vez**, sobre `document`, un `CustomEvent` llamado `yadira:opening-complete`, con propagación y `detail: { package: "YADIRA-001" }`.
+Cada frase entra en 550 ms y sale en 450 ms. Después aparece el Log Pose: iluminación interior, búsqueda de 4,3 segundos con correcciones y dirección final de 44° hacia arriba/derecha. Un pulso precede a DESTINO ENCONTRADO, OUR GRAND LINE y COMENZAR VIAJE. El indicador de ruta muestra únicamente el punto de partida.
 
-Ejemplo para un futuro paquete, una vez aprobado (no incluido en la aplicación):
+COMENZAR VIAJE se bloquea inmediatamente después de activarse. El objeto reacciona, se atenúa el ambiente y se desvanece la escena. Con movimiento reducido se omiten giros y desplazamientos, conservando íntegros los tiempos de lectura. Un cambio de esta preferencia durante una animación también finaliza ese movimiento.
+
+## Contratos de integración
+
+**Entrada a YADIRA-002:** `document` escucha `yadira:opening-complete` una sola vez. El montaje se difiere a una microtarea para que el contrato original de entrega de `#experience` vacío siga siendo observable durante el evento de YADIRA-001.
+
+**Salida hacia YADIRA-003:** se emite exactamente una vez `yadira:journey-start`, sobre `document`, con propagación y `detail: { package: "YADIRA-002" }`. En ese momento la escena está oculta, `#grand-line` está visible, enfocado y literalmente vacío.
 
 ```js
-document.addEventListener('yadira:opening-complete', (event) => {
-  // Punto de integración del siguiente paquete.
+document.addEventListener('yadira:journey-start', (event) => {
+  // Punto de integración para un futuro paquete aprobado.
 }, { once: true });
 ```
 
-Los estados de `.stage` son `opening`, `departing`, `interlude` y `complete`. No se guarda progreso entre recargas. Recargar permite revisar de nuevo la apertura. Con `prefers-reduced-motion: reduce` se omiten animaciones y desplazamientos; se conserva el tiempo de lectura del mensaje.
+Los estados de `.journey-stage` son `ocean`, `narrative`, `searching`, `found`, `ready`, `departing` y `complete`. Se utiliza una sola región viva para las frases, botones nativos, foco visible y decoraciones fuera del árbol de accesibilidad.
+
+## Editar el contenido esta noche
+
+La configuración está en **`src/scripts/content.js`**, mediante `window.YADIRA_CONTENT`. No hay que modificar el HTML ni el código que renderiza las secciones.
+
+- `timeline`: título, fecha, texto, ruta de imagen y descripción alternativa de cada momento. Las fechas son texto libre. Dejar `date`, `text` o `image` en `""` omite ese campo del recuerdo.
+- `yadira`: título, introducción, seis frases y cierre. Los textos iniciales son exclusivamente los autorizados en la tarea.
+- `gallery`: una entrada por fotografía, con `src`, `alt`, `caption` y `story`.
+- `history`, `memories` y `navigation`: títulos, subtítulos y etiquetas.
+
+Para añadir una fotografía, colócala manualmente en `fotos/` y declara su ruta relativa, respetando mayúsculas y extensión:
+
+```js
+gallery: [
+  { src: "fotos/nombre.jpg", alt: "Descripción de la fotografía", caption: "", story: "" }
+]
+```
+
+No se escanea `fotos/`, por lo que funciona en hosting estático como GitHub Pages. Las imágenes del álbum utilizan `loading="lazy"` y mantienen su proporción. El visor utiliza `object-fit: contain`. Una imagen que no puede cargarse se retira de la interfaz; si ninguna carga, permanece la composición decorativa. Una ruta inexistente puede generar un 404 en la consola del navegador: hay que corregirla en `content.js`.
+
+La configuración entregada no incluye fotografías ni fechas inventadas. El único texto personal inicial de los momentos es el autorizado para «Una tarde cualquiera».
+
+## YADIRA-003: interacción y salida
+
+El mapa vertical tiene seis puntos interactivos. Cada uno abre un diálogo con los campos disponibles. Se puede cerrar con el botón, Escape o el fondo exterior. El foco vuelve al punto o fotografía que lo abrió; el diálogo nativo conserva el foco dentro mientras está abierto.
+
+Las frases de la sección Yadira aparecen progresivamente al hacer scroll. Con movimiento reducido permanecen visibles sin desplazamientos. El indicador de ruta muestra el segundo punto del viaje.
+
+CONTINUAR LA AVENTURA bloquea activaciones repetidas, desvanece la escena y muestra/enfoca `#treasure`, literalmente vacío. Después emite sobre `document`, con propagación, una sola vez:
+
+```js
+// detail: { package: "YADIRA-003" }
+document.addEventListener('yadira:grand-line-complete', (event) => {
+  // Punto de integración para el siguiente paquete aprobado.
+}, { once: true });
+```
+
+El montaje de YADIRA-003 ocurre en una microtarea tras `yadira:journey-start`, para conservar la entrega vacía de `#grand-line` durante ese evento. YADIRA-004 escucha posteriormente el evento de salida de Grand Line.
 
 ## QA
 
-El informe de `qa/results.json` corresponde a una ejecución real de Microsoft Edge headless. Las capturas PNG se generan localmente durante las pruebas, se excluyen del repositorio mediante `qa/*.png` y se retiran al finalizar esta limpieza. Los nombres de captura del informe identifican esos archivos generados, que pueden reproducirse ejecutando el QA. `verify-opening.cjs` usa Playwright como herramienta de desarrollo, independiente de la aplicación. Requiere tener `playwright` disponible para Node.js (instalado localmente o mediante `NODE_PATH`) y Edge instalado; no descarga navegadores.
-
-Con el servidor local activo:
+Requiere Playwright disponible para Node.js (instalado localmente o mediante `NODE_PATH`) y Microsoft Edge instalado. Estas herramientas son de desarrollo y no son dependencias de la web. Con el servidor activo:
 
 ```powershell
 node qa/verify-opening.cjs
+node qa/verify-journey.cjs
+node qa/verify-grand-line.cjs
+node qa/verify-treasure.cjs
 ```
 
-Se comprueban 360 × 640, 390 × 844, 430 × 932, 768 × 1024 y 1440 × 900, más 390 × 844 con movimiento reducido. El script valida ausencia de overflow, carga del logo, contenido dentro del viewport, 26 partículas, botón, bloqueo de activaciones repetidas, transición, evento único, foco final, contenedor vacío y ausencia de errores de consola. También comprueba activación por teclado en escritorio y la integridad SHA-256 del logo.
+El primer script aísla el Opening desactivando únicamente la carga de `journey.js`, para comprobar su contrato original. El segundo prueba ambos capítulos aislando la carga de `grand-line.js` para conservar el contrato de salida de YADIRA-002. El tercero prueba el flujo completo en 390 × 844 y, en los otros tamaños, monta YADIRA-003 desde su evento de entrada; aísla `treasure.js` para comprobar la entrega vacía. Treasure tiene una prueba de integración desde Grand Line y pruebas de sus propias interacciones en todos los tamaños.
 
-Las capturas permiten aprobar el aspecto visual. La emulación de viewport no sustituye una prueba en un dispositivo físico.
+Se validan 360 × 640, 390 × 844, 430 × 932, 768 × 1024 y 1440 × 900, además de 390 × 844 con movimiento reducido. Journey comprueba las seis frases exactas, lectura automática conservada, avance manual, controles visibles, ausencia de overflow y solapamientos, dirección final, doble activación, eventos, foco final, contenedor vacío, integridad del logo y errores HTTP/consola. Las capturas permiten revisar el resultado; emular tamaños no sustituye probar dispositivos físicos.
+
+El QA de YADIRA-003 comprueba mapa, recuerdos, cierre mediante botón/Escape/exterior, retorno de foco, contenido sin fotos, frases, galería, visor vertical/horizontal/cuadrado, imágenes fallidas retiradas, evento único de salida y `#treasure` vacío. Utiliza fixtures SVG virtuales servidos únicamente en el navegador de prueba bajo `/qa/fixtures/`; nunca escribe en `fotos/`. También comprueba movimiento reducido y ausencia de overflow horizontal y errores con el contenido entregado.
+
+Las capturas `qa/grand-line-{start,map,memory,yadira,gallery}-{390x844,1440x900}.png` documentan las cinco vistas solicitadas. Las capturas con `fixture` muestran únicamente pruebas internas, no contenido personal. Todas siguen ignoradas por Git.
+
+## YADIRA-004 — The Treasure
+
+Todo el contenido del cierre está en **`window.YADIRA_CONTENT.treasure`**, dentro del mismo **`src/scripts/content.js`**:
+
+- `zoro`: título, homenaje, búsqueda, ERROR 404 y gag. Son textos de la interfaz; no es un error HTTP real.
+- `wanted`: nombre, recompensa, moneda, subtítulo, delito, monograma, imagen y descripción alternativa.
+- `letter`: introducción, título, array de párrafos `body`, botones y cierre. Sustituye o añade párrafos directamente; el render usa texto, no HTML.
+- `birthday`: edad, nombre, felicitación, instrucción de las velas y confirmación del deseo.
+- `ending`: imagen, descripción alternativa, líneas finales, fecha, firma, autor, año, TO BE CONTINUED y reinicio.
+
+Las fotografías `wanted.image` y `ending.image` vienen vacías. Para configurarlas usa rutas como `fotos/nombre.jpg`. Se solicitan al revelar su escena y no aparecen hasta cargar correctamente. Si faltan o fallan, el Wanted mantiene su monograma y el final funciona con texto. Se usa `object-fit: contain`, sin recortar retratos.
+
+**Flujo:** el evento `yadira:grand-line-complete` monta el cierre en una microtarea, conservando la entrega vacía observable por otros listeners. ENCONTRAR A ZORO muestra una búsqueda breve, el gag y un Wanted original en HTML/CSS. La paleta verde se limita al primer tramo. El cartel conduce por scroll al sobre.
+
+ABRIR CARTA abre el sobre y revela una carta en el flujo del documento, con scroll natural. Se puede cerrar mediante Cerrar carta o Escape y volver a abrir. El foco vuelve al botón original. CONTINUAR inicia la revelación de 19, YADIRA, la felicitación y un pastel original de CSS con dos velas numéricas.
+
+El pastel es un botón accesible por teclado y táctil. Al activarlo se bloquea, apaga las llamas y muestra humo y cuatro estrellas discretas. «Deseo guardado. ✦» permanece 2,3 segundos antes del fundido al final. La ruta aparece completamente recorrida. Volver al inicio recarga la página y reinicia todos los capítulos.
+
+Las animaciones respetan movimiento reducido. Las transiciones instantáneas incluyen una breve guarda de 300 ms antes de habilitar los controles recién aparecidos, para que el segundo toque de una doble pulsación no active accidentalmente el siguiente paso. No se accede al micrófono ni se reproduce música.
+
+### QA del cierre
+
+`qa/verify-treasure.cjs` comprueba los cinco tamaños y 390 × 844 con movimiento reducido: entrada desde Grand Line, gag, Wanted sin imagen, apertura/cierre/reapertura de carta, doble activación, cumpleaños, velas, deseo, final, ruta completa y reinicio. Un caso adicional utiliza una carta de 20 párrafos y un fixture SVG virtual bajo `/qa/fixtures/treasure.svg` para probar imágenes verticales del cartel y final. No se escriben fixtures en `fotos/`.
+
+Las capturas móviles cubren Zoro, ERROR 404, Wanted, sobre, carta, cumpleaños, velas apagadas, final y TO BE CONTINUED. En escritorio se capturan Wanted, carta y final. Permanecen excluidas de Git mediante `qa/*.png`.
+
+Si varias suites coinciden, puede iniciarse un servidor local de QA con más capacidad de conexiones en el puerto 5174 y usar `YADIRA_QA_URL=http://127.0.0.1:5174`. Esto no cambia la web ni sus dependencias.
 
 ## Git
 
-Se conserva el repositorio y el remoto existente. No se hace staging, commit ni push durante este paquete. Los cambios quedan disponibles para revisión visual.
+Trabajo actual en `feature/yadira-004-treasure`. Se conservaron los cambios locales de YADIRA-002 y YADIRA-003 que aún estaban pendientes al iniciar la tarea. No se hace staging, commit ni push. Las carpetas `onepiece/` y `fotos/` permanecen intactas.

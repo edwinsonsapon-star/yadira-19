@@ -1,0 +1,128 @@
+{
+  "package": "YADIRA-003",
+  "checkedAt": "2026-09-29T21:45:18.864Z",
+  "browser": "154.0.4258.37",
+  "results": [
+    {
+      "viewport": "390x844",
+      "reducedMotion": false,
+      "fullJourneyIntegration": true,
+      "status": "PASS",
+      "timeline": 6,
+      "noPhotos": true,
+      "modalCloseMethods": [
+        "button",
+        "Escape",
+        "outside"
+      ],
+      "focusRestored": true,
+      "noHorizontalOverflow": true,
+      "completionEvents": 1,
+      "treasureEmpty": true,
+      "errors": []
+    },
+    {
+      "viewport": "360x640",
+      "reducedMotion": false,
+      "fullJourneyIntegration": false,
+      "status": "PASS",
+      "timeline": 6,
+      "noPhotos": true,
+      "modalCloseMethods": [
+        "button",
+        "Escape",
+        "outside"
+      ],
+      "focusRestored": true,
+      "noHorizontalOverflow": true,
+      "completionEvents": 1,
+      "treasureEmpty": true,
+      "errors": []
+    },
+    {
+      "viewport": "430x932",
+      "reducedMotion": false,
+      "fullJourneyIntegration": false,
+      "status": "PASS",
+      "timeline": 6,
+      "noPhotos": true,
+      "modalCloseMethods": [
+        "button",
+        "Escape",
+        "outside"
+      ],
+      "focusRestored": true,
+      "noHorizontalOverflow": true,
+      "completionEvents": 1,
+      "treasureEmpty": true,
+      "errors": []
+    },
+    {
+      "viewport": "768x1024",
+      "reducedMotion": false,
+      "fullJourneyIntegration": false,
+      "status": "PASS",
+      "timeline": 6,
+      "noPhotos": true,
+      "modalCloseMethods": [
+        "button",
+        "Escape",
+        "outside"
+      ],
+      "focusRestored": true,
+      "noHorizontalOverflow": true,
+      "completionEvents": 1,
+      "treasureEmpty": true,
+      "errors": []
+    },
+    {
+      "viewport": "1440x900",
+      "reducedMotion": false,
+      "fullJourneyIntegration": false,
+      "status": "PASS",
+      "timeline": 6,
+      "noPhotos": true,
+      "modalCloseMethods": [
+        "button",
+        "Escape",
+        "outside"
+      ],
+      "focusRestored": true,
+      "noHorizontalOverflow": true,
+      "completionEvents": 1,
+      "treasureEmpty": true,
+      "errors": []
+    },
+    {
+      "viewport": "390x844",
+      "reducedMotion": true,
+      "fullJourneyIntegration": false,
+      "status": "PASS",
+      "timeline": 6,
+      "noPhotos": true,
+      "modalCloseMethods": [
+        "button",
+        "Escape",
+        "outside"
+      ],
+      "focusRestored": true,
+      "noHorizontalOverflow": true,
+      "completionEvents": 1,
+      "treasureEmpty": true,
+      "errors": []
+    },
+    {
+      "fixture": true,
+      "status": "PASS",
+      "portraitLandscapeSquare": true,
+      "failedImageRemoved": true,
+      "nativeLazyLoading": true,
+      "viewerCloseMethods": [
+        "button",
+        "Escape",
+        "outside"
+      ],
+      "errors": []
+    }
+  ]
+}

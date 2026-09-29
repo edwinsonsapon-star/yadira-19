@@ -1,0 +1,92 @@
+/* YADIRA-004. All artwork is original CSS/SVG; earlier chapters are untouched. */
+.treasure-story { position: relative; isolation: isolate; background: var(--ocean-black); color: var(--warm-ivory); overflow: clip; opacity: 0; outline: none; }
+.treasure-story h2, .treasure-story h3, .treasure-story p { margin: 0; }
+.treasure-section { position: relative; padding: 65px 24px; text-align: center; outline: none; }
+.treasure-route { display: flex; align-items: center; justify-content: center; gap: 9px; width: 184px; margin: 0 auto 48px; color: #c8aa76; }
+.treasure-route b { height: 1px; background: #c49a5570; flex: 1; }
+.treasure-route i { width: 6px; height: 6px; border: 1px solid #c49a55; background: #c49a55; border-radius: 50%; }
+.treasure-route svg { width: 15px; height: 15px; }
+.treasure-route em { width: 8px; height: 8px; transform: rotate(45deg); border: 1px solid #c49a5580; }
+.treasure-route[data-complete] em { background: #e4c188; box-shadow: 0 0 0 4px #c49a5514, 0 0 18px #c49a5580; }
+.treasure-button { display: inline-flex; align-items: center; justify-content: center; min-height: 54px; max-width: 100%; padding: 17px 28px; border: 1px solid #c49a5585; border-radius: 100px; background: linear-gradient(115deg, #c49a5514, #553c8b17); color: #e8ceaa; font-size: 10px; letter-spacing: .17em; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: transparent; transition: box-shadow .25s; }
+.treasure-button:disabled { cursor: default; }
+.treasure-button:hover:not(:disabled) { box-shadow: 0 0 26px #c49a5520; }
+.treasure-button:focus-visible, .treasure-quiet:focus-visible, .treasure-cake:focus-visible { outline: 2px solid var(--warm-ivory); outline-offset: 6px; }
+.treasure-quiet { display: block; margin: 24px auto 0; min-height: 44px; padding: 10px 20px; border: 0; background: transparent; color: #b7a9c8; font-size: 12px; cursor: pointer; }
+.treasure-zoro { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(ellipse at 50% 36%, #29423665, transparent 61%), linear-gradient(#07111a, #09130f 65%, #080e15); }
+.treasure-zoro .treasure-route { margin-bottom: 35px; }
+.treasure-swords { width: 150px; height: 150px; color: #a9b385; margin: 0 auto 26px; }
+.treasure-zoro h2 { font-family: var(--font-display); font-weight: 400; font-size: clamp(25px, 6.5vw, 34px); letter-spacing: .06em; }
+.treasure-zoro-intro { margin: 20px auto 30px !important; max-width: 360px; color: #bac5b1; font-family: var(--font-display); font-style: italic; font-size: 18px; line-height: 1.7; }
+.treasure-search-status { min-height: 28px; margin-top: 25px !important; color: #c2caa8; font-size: 12px; letter-spacing: .06em; }
+.treasure-search-ring { width: 24px; height: 24px; border: 1px solid #becf9340; border-top-color: #d2bf85; border-radius: 50%; margin: 20px auto 0; animation: treasure-search 1.4s linear infinite; }
+.treasure-zoro-result { margin: 18px auto 0; max-width: 360px; }
+.treasure-zoro-result h3 { font-size: 12px; letter-spacing: .3em; font-weight: 400; color: #d0b077; }
+.treasure-zoro-result p { font-family: var(--font-display); font-size: 22px; line-height: 1.6; margin-top: 14px !important; }
+.treasure-zoro-result p:last-child { font-size: 17px; color: #b7c0aa; margin-top: 22px !important; }
+.treasure-wanted { padding: 64px 20px 95px; background: linear-gradient(#080e15, #101124 72%, #0a101d); }
+.wanted-paper { position: relative; width: min(380px, 100%); margin: auto; padding: 30px 22px 32px; color: #322719; background: radial-gradient(ellipse at 30% 30%, #f0dfb7, transparent 70%), repeating-linear-gradient(93deg, #80613908 0 1px, transparent 1px 4px), #d5bd8e; border: 1px solid #8e6a42; box-shadow: inset 0 0 50px #6e472e55, 0 24px 75px #0008; transform: rotate(-1deg); }
+.wanted-paper::before { content: ""; position: absolute; inset: 11px; border: 1px solid #74553775; pointer-events: none; }
+.wanted-paper .wanted-title { font-family: Georgia, serif; font-size: clamp(48px, 14vw, 69px); font-weight: 700; letter-spacing: .035em; line-height: 1.1; text-shadow: 1px 1px #f3dfb9; }
+.wanted-notice { font-family: Georgia, serif; font-weight: 700; font-size: 13px; letter-spacing: .19em; margin: 14px 0 20px !important; }
+.wanted-monogram { position: relative; display: grid; place-items: center; width: 100%; height: 180px; margin: 22px auto; border-block: 1px solid #765c3c70; font-family: var(--font-display); font-size: 110px; font-style: italic; color: #725438; background: radial-gradient(ellipse, #92704616, transparent 70%); }
+.wanted-monogram::before { content: ""; position: absolute; width: 130px; height: 130px; border: 1px solid #82624055; border-radius: 50%; box-shadow: 0 0 0 8px #8262400d; }
+.wanted-photo { display: block; max-height: 330px; width: 100%; height: auto; object-fit: contain; margin: 20px auto; border: 1px solid #795c3b80; }
+.wanted-name { font-family: Georgia, serif; font-size: clamp(35px, 10vw, 48px); letter-spacing: .07em; line-height: 1.2; font-weight: 700; }
+.wanted-subtitle { font-size: 10px; letter-spacing: .23em; margin: 11px 0 19px !important; }
+.wanted-reward { font-family: Georgia, serif; font-size: clamp(23px, 7vw, 31px); font-weight: 700; white-space: normal; }
+.wanted-reward small { display: block; font-size: 11px; letter-spacing: .21em; margin-top: 8px; }
+.wanted-crime { max-width: 270px; margin: 20px auto 0 !important; font-family: Georgia, serif; font-size: 13px; font-style: italic; line-height: 1.7; }
+.treasure-mail { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 70px 24px 95px; background: radial-gradient(ellipse at 50% 28%, #38264740, transparent 65%), linear-gradient(#0a101d, #100f20, #05070d); }
+.treasure-mail-label { font-weight: 400; font-size: 11px; letter-spacing: .32em; color: #d9bd8c; }
+.treasure-envelope { position: relative; width: min(280px, 88%); aspect-ratio: 1.5; margin: 65px auto 48px; background: #b5a07f; box-shadow: 0 15px 40px #0007; perspective: 600px; }
+.treasure-envelope::before { content: ""; position: absolute; inset: 0; background: linear-gradient(140deg, #d9c8a6, #bca384); clip-path: polygon(0 0, 50% 58%, 100% 0, 100% 100%, 0 100%); z-index: 2; }
+.treasure-envelope::after { content: ""; position: absolute; inset: 0; background: linear-gradient(10deg, #d8c3a0, #eadabd); clip-path: polygon(0 100%, 50% 48%, 100% 100%); z-index: 3; }
+.treasure-envelope-flap { position: absolute; inset: 0; z-index: 4; background: linear-gradient(#e7d6b8, #c5af8b); clip-path: polygon(0 0, 100% 0, 50% 62%); transform-origin: top; }
+.treasure-envelope-sheet { position: absolute; inset: 10px 10px 20px; background: #f0e6d3; border: 1px solid #bcab8a; }
+.treasure-seal { position: absolute; z-index: 5; left: calc(50% - 20px); top: 43%; display: grid; place-items: center; width: 40px; height: 40px; border: 3px double #d3b478; border-radius: 50%; background: #765739; color: #e8cf9c; font-family: var(--font-display); font-style: italic; font-size: 23px; }
+.treasure-letter { width: 100%; max-width: 650px; margin: 40px auto 0; padding: 45px 28px 38px; text-align: left; color: #e6dccb; border: 1px solid #c49a5535; border-radius: 3px; background: linear-gradient(130deg, #221d2d, #101722 75%); box-shadow: 0 25px 70px #0004; outline: none; }
+.treasure-letter h3 { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 31px; color: #e2c28d; margin-bottom: 30px; }
+.treasure-letter p { font-family: var(--font-display); font-size: 19px; line-height: 1.9; margin-bottom: 23px; white-space: pre-line; overflow-wrap: anywhere; }
+.treasure-letter-actions { text-align: center; margin-top: 35px; }
+.treasure-birthday { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 55px 24px; background: radial-gradient(ellipse at 50% 53%, #553c8b32, transparent 65%), #05070d; }
+.treasure-age { font-family: var(--font-display); font-size: clamp(125px, 38vw, 190px); font-weight: 400; line-height: 1; letter-spacing: -.06em; color: #f1e6d3; text-shadow: 0 0 65px #c49a551d; }
+.treasure-birthday-name { color: #d2b181; font-size: 12px; letter-spacing: .43em; margin-top: 20px !important; padding-left: .43em; }
+.treasure-birthday-title { font-family: var(--font-display); font-size: clamp(22px, 6vw, 30px); font-style: italic; font-weight: 400; line-height: 1.5; margin-top: 20px !important; }
+.treasure-cake { position: relative; display: block; width: 230px; height: 195px; margin: 38px auto 15px; padding: 0; border: 0; background: transparent; cursor: pointer; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+.treasure-cake:disabled { cursor: default; }
+.cake-body { position: absolute; top: 95px; left: 22px; width: 186px; height: 70px; border-radius: 0 0 40% 40% / 0 0 25% 25%; background: linear-gradient(90deg, #393044, #716071 45%, #393044); border-bottom: 4px solid #c9a96c; box-shadow: 0 12px 25px #0008; }
+.cake-body::before { content: ""; position: absolute; top: -19px; left: 0; width: 100%; height: 37px; border-radius: 50%; background: radial-gradient(ellipse, #f0dfc2, #cbb798); border: 1px solid #dac8a4; }
+.cake-body::after { content: ""; position: absolute; top: 12px; left: 0; right: 0; height: 20px; border-radius: 0 0 50% 50%; border-bottom: 1px solid #ceb58780; }
+.cake-plate { position: absolute; bottom: 19px; left: 8px; width: 214px; height: 25px; border-radius: 50%; background: linear-gradient(#9e865e, #382f26); border-bottom: 1px solid #d6b676; }
+.cake-candles { position: absolute; top: 34px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; z-index: 1; }
+.cake-candle { position: relative; font-family: Georgia, serif; font-size: 53px; line-height: 1; font-weight: bold; color: #e0c99a; text-shadow: 1px 2px #776244; }
+.cake-candle::after { content: ""; position: absolute; bottom: -10px; height: 12px; width: 2px; left: 50%; background: #d8c8a2; }
+.cake-flame { position: absolute; top: -24px; left: calc(50% - 5px); width: 10px; height: 19px; border-radius: 80% 20% 65% 40%; background: radial-gradient(ellipse at 50% 75%, #fff5ce, #eab85b 55%, #ad6422); box-shadow: 0 0 13px #f3c67c66; animation: treasure-flame 2.8s ease-in-out infinite alternate; transform-origin: bottom; }
+.cake-smoke { position: absolute; top: -35px; left: 50%; width: 14px; height: 26px; border-left: 1px solid #d5cad080; border-radius: 50%; opacity: 0; }
+.treasure-cake[data-out] .cake-smoke { animation: treasure-smoke 1.3s ease-out both; }
+.cake-sparks { position: absolute; inset: 0; pointer-events: none; }
+.cake-sparks i { position: absolute; color: #dbc295; font-style: normal; font-size: 13px; opacity: 0; }
+.cake-sparks i:nth-child(1) { top: 45px; left: 14px; }.cake-sparks i:nth-child(2) { top: 15px; right: 15px; }.cake-sparks i:nth-child(3) { top: 0; left: 45px; }.cake-sparks i:nth-child(4) { top: 68px; right: 8px; }
+.treasure-cake[data-out] .cake-sparks i { animation: treasure-spark 1.5s ease-out both; }
+.treasure-instruction { font-size: 13px; color: #cbbfda; line-height: 1.7; }
+.treasure-wish { min-height: 28px; font-family: var(--font-display); font-size: 22px; color: #e1c28f; margin-top: 18px !important; }
+.treasure-ending { min-height: 100vh; min-height: 100svh; padding: 80px 26px 50px; background: radial-gradient(ellipse at 50% 22%, #553c8b25, transparent 58%), linear-gradient(#05070d, #0b1424 50%, #05070d); }
+.treasure-ending-photo { width: min(480px, 100%); height: auto; max-height: 62svh; object-fit: contain; margin: 5px auto 45px; display: block; border-radius: 3px; }
+.treasure-ending-lines { max-width: 640px; margin: 35px auto 50px; }
+.treasure-ending-lines p { font-family: var(--font-display); font-size: clamp(23px, 6vw, 32px); line-height: 1.7; text-wrap: balance; }
+.treasure-ending-lines p + p { margin-top: 25px; color: #bcb0ce; }
+.treasure-ending-birthday { font-family: var(--font-display); font-style: italic; font-size: clamp(24px, 6.5vw, 34px); line-height: 1.5; margin-bottom: 32px !important; color: #e8d2b3; }
+.treasure-ending-name { font-family: var(--font-display); font-size: 26px; letter-spacing: .12em; font-weight: 400; }
+.treasure-ending-date { font-size: 10px; letter-spacing: .3em; color: #c5b8d0; margin-top: 18px !important; }
+.treasure-signature { color: #b6a7c7; font-size: 11px; line-height: 1.9; margin: 65px auto 0; }
+.treasure-signature strong { font-family: var(--font-display); font-size: 21px; font-style: italic; font-weight: 400; color: #d2b990; display: block; margin-top: 12px; }
+.treasure-signature small { display: block; margin-top: 5px; font-size: 10px; letter-spacing: .15em; }
+.treasure-continued { display: inline-block; max-width: 100%; border-block: 1px solid #c49a5555; padding: 20px 6px; font-family: Georgia, serif; font-weight: bold; font-style: italic; font-size: clamp(21px, 5.8vw, 32px); letter-spacing: .04em; color: #e6d1ad; margin: 65px auto 15px !important; }
+@keyframes treasure-search { to { transform: rotate(360deg); } }
+@keyframes treasure-flame { from { transform: rotate(-6deg) scale(.95); } to { transform: rotate(6deg) scale(1.03); } }
+@keyframes treasure-smoke { from { opacity: .55; transform: translateY(0) scale(.7); } to { opacity: 0; transform: translateY(-25px) scale(1.4); } }
+@keyframes treasure-spark { 0% { opacity: 0; transform: translateY(0); } 30% { opacity: .65; } 100% { opacity: 0; transform: translateY(-18px); } }
+@media (max-height: 700px) { .treasure-zoro { padding-block: 40px; }.treasure-zoro .treasure-route { margin-bottom: 20px; }.treasure-swords { width: 115px; height: 115px; margin-bottom: 20px; }.treasure-birthday { padding-block: 35px; }.treasure-age { font-size: 122px; }.treasure-cake { margin-top: 26px; margin-bottom: 10px; transform: scale(.9); }.treasure-birthday-name { margin-top: 12px !important; }.treasure-birthday-title { margin-top: 12px !important; } }
+@media (min-width: 768px) { .treasure-mail { padding-block: 90px 110px; }.treasure-letter { padding: 55px 60px; }.treasure-ending { padding-top: 95px; }.treasure-ending-lines { margin-block: 55px; } }
+@media (prefers-reduced-motion: reduce) { .treasure-story *, .treasure-story *::before, .treasure-story *::after { animation: none !important; transition: none !important; } }

@@ -24,6 +24,11 @@ const cases = [...sizes.map(([width, height]) => ({ width, height, reduced: fals
       const errors = [];
       const page = await browser.newPage({ viewport: { width, height },
         reducedMotion: reduced ? 'reduce' : 'no-preference', deviceScaleFactor: 1 });
+      // Isolate YADIRA-001's original empty-container contract. The full handoff
+      // into YADIRA-002 is exercised separately by verify-journey.cjs.
+      await page.route('**/src/scripts/journey.js', (route) => route.fulfill({
+        status: 200, contentType: 'application/javascript', body: '',
+      }));
       page.on('pageerror', (error) => errors.push(error.message));
       page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
       page.on('response', (response) => { if (response.status() >= 400) errors.push(`${response.status()} ${response.url()}`); });

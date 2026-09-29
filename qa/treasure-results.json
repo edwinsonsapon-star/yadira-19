@@ -1,0 +1,154 @@
+{
+  "package": "YADIRA-004",
+  "checkedAt": "2026-09-29T21:45:02.359Z",
+  "browser": "154.0.4258.37",
+  "results": [
+    {
+      "viewport": "360x640",
+      "reducedMotion": false,
+      "integrationFromGrandLine": false,
+      "fixture": false,
+      "status": "PASS",
+      "zoro": true,
+      "wanted": true,
+      "letterCloseMethods": [
+        "button",
+        "Escape"
+      ],
+      "longLetter": false,
+      "birthday": true,
+      "wishOnce": true,
+      "flamesOut": true,
+      "ending": true,
+      "restart": true,
+      "noHorizontalOverflow": true,
+      "errors": []
+    },
+    {
+      "viewport": "390x844",
+      "reducedMotion": false,
+      "integrationFromGrandLine": true,
+      "fixture": false,
+      "status": "PASS",
+      "zoro": true,
+      "wanted": true,
+      "letterCloseMethods": [
+        "button",
+        "Escape"
+      ],
+      "longLetter": false,
+      "birthday": true,
+      "wishOnce": true,
+      "flamesOut": true,
+      "ending": true,
+      "restart": true,
+      "noHorizontalOverflow": true,
+      "errors": []
+    },
+    {
+      "viewport": "430x932",
+      "reducedMotion": false,
+      "integrationFromGrandLine": false,
+      "fixture": false,
+      "status": "PASS",
+      "zoro": true,
+      "wanted": true,
+      "letterCloseMethods": [
+        "button",
+        "Escape"
+      ],
+      "longLetter": false,
+      "birthday": true,
+      "wishOnce": true,
+      "flamesOut": true,
+      "ending": true,
+      "restart": true,
+      "noHorizontalOverflow": true,
+      "errors": []
+    },
+    {
+      "viewport": "768x1024",
+      "reducedMotion": false,
+      "integrationFromGrandLine": false,
+      "fixture": false,
+      "status": "PASS",
+      "zoro": true,
+      "wanted": true,
+      "letterCloseMethods": [
+        "button",
+        "Escape"
+      ],
+      "longLetter": false,
+      "birthday": true,
+      "wishOnce": true,
+      "flamesOut": true,
+      "ending": true,
+      "restart": true,
+      "noHorizontalOverflow": true,
+      "errors": []
+    },
+    {
+      "viewport": "390x844",
+      "reducedMotion": true,
+      "integrationFromGrandLine": false,
+      "fixture": false,
+      "status": "PASS",
+      "zoro": true,
+      "wanted": true,
+      "letterCloseMethods": [
+        "button",
+        "Escape"
+      ],
+      "longLetter": false,
+      "birthday": true,
+      "wishOnce": true,
+      "flamesOut": true,
+      "ending": true,
+      "restart": true,
+      "noHorizontalOverflow": true,
+      "errors": []
+    },
+    {
+      "viewport": "1440x900",
+      "reducedMotion": false,
+      "integrationFromGrandLine": false,
+      "fixture": false,
+      "status": "PASS",
+      "zoro": true,
+      "wanted": true,
+      "letterCloseMethods": [
+        "button",
+        "Escape"
+      ],
+      "longLetter": false,
+      "birthday": true,
+      "wishOnce": true,
+      "flamesOut": true,
+      "ending": true,
+      "restart": true,
+      "noHorizontalOverflow": true,
+      "errors": []
+    },
+    {
+      "viewport": "390x844",
+      "reducedMotion": false,
+      "integrationFromGrandLine": false,
+      "fixture": true,
+      "status": "PASS",
+      "zoro": true,
+      "wanted": true,
+      "letterCloseMethods": [
+        "button",
+        "Escape"
+      ],
+      "longLetter": true,
+      "birthday": true,
+      "wishOnce": true,
+      "flamesOut": true,
+      "ending": true,
+      "restart": true,
+      "noHorizontalOverflow": true,
+      "errors": []
+    }
+  ]
+}
