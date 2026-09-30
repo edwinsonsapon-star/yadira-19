@@ -12,6 +12,17 @@
     return element;
   };
   const hasText = (value) => typeof value === "string" && value.trim().length > 0;
+  function orientPhoto(image, item) {
+    if (item.rotation !== -90 && item.rotation !== 90) return image;
+    const frame = node("span", "grand-oriented-photo");
+    frame.style.setProperty("--photo-rotation", `${item.rotation}deg`);
+    // A quarter turn swaps the layout dimensions as well as the visible image.
+    image.addEventListener("load", () => {
+      frame.style.setProperty("--photo-ratio", image.naturalHeight / image.naturalWidth);
+    }, { once: true });
+    frame.append(image);
+    return frame;
+  }
   async function fade(element, from, to, duration) {
     if (motion.matches || !element.animate) { element.style.opacity = to; return; }
     const animation = element.animate([{ opacity: from }, { opacity: to }], { duration, easing: "ease-in-out", fill: "forwards" });
@@ -74,8 +85,8 @@
         image.alt = item.alt || item.caption || item.title || content.navigation.viewPhoto;
         image.decoding = "async";
         image.addEventListener("error", () => image.remove(), { once: true });
+        dialogBody.append(orientPhoto(image, item));
         image.src = source;
-        dialogBody.append(image);
       } else {
         const ornament = node("div", "grand-divider", "✧");
         ornament.setAttribute("aria-hidden", "true");
@@ -167,11 +178,11 @@
         if (loadedPhotos) emptySea.hidden = true;
       }, { once: true });
       image.addEventListener("error", () => photo.remove(), { once: true });
+      if (item.rotation === -90 || item.rotation === 90) button.dataset.rotation = String(item.rotation);
+      button.append(orientPhoto(image, item));
       image.src = item.src;
-      button.append(image);
       button.addEventListener("click", () => openMemory(item, true, button));
       photo.append(button);
-      if (hasText(item.caption)) photo.append(node("figcaption", "", item.caption));
       album.append(photo);
     }
     const next = node("button", "grand-next", content.navigation.continue);

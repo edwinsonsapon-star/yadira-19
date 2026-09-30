@@ -48,8 +48,10 @@
 .treasure-letter { width: 100%; max-width: 650px; margin: 40px auto 0; padding: 45px 28px 38px; text-align: left; color: #e6dccb; border: 1px solid #c49a5535; border-radius: 3px; background: linear-gradient(130deg, #221d2d, #101722 75%); box-shadow: 0 25px 70px #0004; outline: none; }
 .treasure-letter h3 { font-family: var(--font-display); font-style: italic; font-weight: 400; font-size: 31px; color: #e2c28d; margin-bottom: 30px; }
 .treasure-letter p { font-family: var(--font-display); font-size: 19px; line-height: 1.9; margin-bottom: 23px; white-space: pre-line; overflow-wrap: anywhere; }
-.treasure-letter-actions { text-align: center; margin-top: 35px; }
+.treasure-letter-actions { text-align: center; margin-top: 42px; }
+.treasure-letter-actions::before { content: "—  ✦  —"; display: block; margin: 0 auto 30px; color: #c49a558c; font-family: Georgia, serif; font-size: 13px; letter-spacing: .28em; }
 .treasure-birthday { min-height: 100vh; min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 55px 24px; background: radial-gradient(ellipse at 50% 53%, #553c8b32, transparent 65%), #05070d; }
+.treasure-birthday-prelude { max-width: 520px; font-family: var(--font-display); font-size: clamp(22px, 6vw, 30px); font-style: italic; line-height: 1.65; color: #e1d4e7; text-wrap: balance; }
 .treasure-age { font-family: var(--font-display); font-size: clamp(125px, 38vw, 190px); font-weight: 400; line-height: 1; letter-spacing: -.06em; color: #f1e6d3; text-shadow: 0 0 65px #c49a551d; }
 .treasure-birthday-name { color: #d2b181; font-size: 12px; letter-spacing: .43em; margin-top: 20px !important; padding-left: .43em; }
 .treasure-birthday-title { font-family: var(--font-display); font-size: clamp(22px, 6vw, 30px); font-style: italic; font-weight: 400; line-height: 1.5; margin-top: 20px !important; }
@@ -71,17 +73,21 @@
 .treasure-cake[data-out] .cake-sparks i { animation: treasure-spark 1.5s ease-out both; }
 .treasure-instruction { font-size: 13px; color: #cbbfda; line-height: 1.7; }
 .treasure-wish { min-height: 28px; font-family: var(--font-display); font-size: 22px; color: #e1c28f; margin-top: 18px !important; }
+.treasure-wish-followup { max-width: 520px; min-height: 30px; margin: 17px auto 0 !important; font-family: var(--font-display); font-size: 18px; line-height: 1.7; color: #c9bfd4; text-wrap: balance; }
 .treasure-ending { min-height: 100vh; min-height: 100svh; padding: 80px 26px 50px; background: radial-gradient(ellipse at 50% 22%, #553c8b25, transparent 58%), linear-gradient(#05070d, #0b1424 50%, #05070d); }
 .treasure-ending-photo { width: min(480px, 100%); height: auto; max-height: 62svh; object-fit: contain; margin: 5px auto 45px; display: block; border-radius: 3px; }
 .treasure-ending-lines { max-width: 640px; margin: 35px auto 50px; }
 .treasure-ending-lines p { font-family: var(--font-display); font-size: clamp(23px, 6vw, 32px); line-height: 1.7; text-wrap: balance; }
 .treasure-ending-lines p + p { margin-top: 25px; color: #bcb0ce; }
-.treasure-ending-birthday { font-family: var(--font-display); font-style: italic; font-size: clamp(24px, 6.5vw, 34px); line-height: 1.5; margin-bottom: 32px !important; color: #e8d2b3; }
+.treasure-ending-highlight { max-width: 650px; margin: 0 auto 42px; font-family: var(--font-display); color: #e8d2b3; }
+.treasure-ending-highlight strong { display: block; font-size: clamp(25px, 6.5vw, 36px); font-style: italic; font-weight: 400; line-height: 1.5; }
+.treasure-ending-highlight span { display: block; margin-top: 13px; font-size: clamp(18px, 4.8vw, 24px); line-height: 1.6; color: #c7bad1; }
 .treasure-ending-name { font-family: var(--font-display); font-size: 26px; letter-spacing: .12em; font-weight: 400; }
 .treasure-ending-date { font-size: 10px; letter-spacing: .3em; color: #c5b8d0; margin-top: 18px !important; }
 .treasure-signature { color: #b6a7c7; font-size: 11px; line-height: 1.9; margin: 65px auto 0; }
 .treasure-signature strong { font-family: var(--font-display); font-size: 21px; font-style: italic; font-weight: 400; color: #d2b990; display: block; margin-top: 12px; }
 .treasure-signature small { display: block; margin-top: 5px; font-size: 10px; letter-spacing: .15em; }
+.treasure-continuation-lead { max-width: 520px; margin: 58px auto 0 !important; font-family: var(--font-display); font-size: 18px; line-height: 1.7; color: #bfb2c9; }
 .treasure-continued { display: inline-block; max-width: 100%; border-block: 1px solid #c49a5555; padding: 20px 6px; font-family: Georgia, serif; font-weight: bold; font-style: italic; font-size: clamp(21px, 5.8vw, 32px); letter-spacing: .04em; color: #e6d1ad; margin: 65px auto 15px !important; }
 @keyframes treasure-search { to { transform: rotate(360deg); } }
 @keyframes treasure-flame { from { transform: rotate(-6deg) scale(.95); } to { transform: rotate(6deg) scale(1.03); } }
@@ -107,7 +113,9 @@
 .wanted-paper[data-template] .wanted-monogram { height: 100%; margin: 0; border: 0; font-size: 27cqw; color: #66553699; background: repeating-linear-gradient(115deg, transparent 0 15px, #80663c06 16px 17px); }
 .wanted-paper[data-template] .wanted-monogram::before { width: 38cqw; height: 38cqw; border: 1px solid #7f694c55; box-shadow: 0 0 0 8px #8262400d, 0 0 0 9px #82624022; }
 .wanted-paper[data-template] .wanted-monogram::after { content: "✦"; position: absolute; bottom: 10%; font-size: 4cqw; color: #80673d80; }
-.wanted-paper[data-template] .wanted-photo { width: 100%; height: 100%; max-height: none; margin: 0; border: 0; object-fit: cover; object-position: center 35%; filter: sepia(.12) saturate(.88); }
+.wanted-paper[data-template] .wanted-photo { width: 100%; height: 100%; max-height: none; margin: 0; border: 0; object-fit: cover; object-position: center 35%; }
+.wanted-portrait[data-rotation] { position: relative; width: 100%; aspect-ratio: var(--photo-ratio, 1); container-type: size; }
+.wanted-portrait[data-rotation] .wanted-photo { position: absolute; left: 50%; top: 50%; width: 100cqh; height: 100cqw; max-height: none; margin: 0; border: 0; transform: translate(-50%, -50%) rotate(var(--photo-rotation)); object-fit: cover; object-position: center; }
 .wanted-paper[data-template] .wanted-notice { top: 65.5%; left: 5%; width: 90%; font-size: 4cqw; letter-spacing: .15em; }
 .wanted-paper[data-template] .wanted-name { top: 70%; left: 4%; width: 92%; font-size: 10cqw; }
 .wanted-paper[data-template] .wanted-subtitle { top: 79%; left: 5%; width: 90%; font-size: 2.5cqw; }

@@ -73,15 +73,23 @@
 .grand-dialog-date { font-size: 11px; letter-spacing: .15em; color: #d4b785; margin-bottom: 22px; }
 .grand-dialog-text { font-family: var(--font-display); font-size: 20px; line-height: 1.8; color: #d5cadf; white-space: pre-line; }
 .grand-dialog-photo { display: block; width: 100%; max-height: 52svh; height: auto; object-fit: contain; margin: 0 auto 22px; border-radius: 3px; }
+.grand-oriented-photo { display: block; position: relative; aspect-ratio: var(--photo-ratio, 1); width: 100%; }
+.grand-oriented-photo > img { position: absolute; left: 50%; top: 50%; width: calc(100% / var(--photo-ratio, 1)); height: calc(100% * var(--photo-ratio, 1)); max-height: none; margin: 0; transform: translate(-50%, -50%) rotate(var(--photo-rotation)); object-fit: contain; }
+.grand-dialog .grand-oriented-photo { width: min(100%, calc(52svh * var(--photo-ratio, 1))); margin: 0 auto 22px; }
+.grand-photo button[data-rotation] { padding: 6px 6px 17px; background: #d8cbb5; box-shadow: 0 12px 25px #0005; }
+.grand-photo button[data-rotation] img { border: 0; box-shadow: none; }
 .grand-dialog[data-mode="viewer"] { width: 100vw; height: 100vh; height: 100svh; max-width: none; max-height: none; margin: 0; border-radius: 0; border: 0; background: #05070df7; }
 .grand-dialog[data-mode="viewer"] .grand-dialog-body { min-height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 70px 24px 35px; max-width: 1050px; margin: auto; }
 .grand-dialog[data-mode="viewer"] .grand-dialog-photo { max-height: 65svh; }
+.grand-dialog[data-mode="viewer"] .grand-oriented-photo { width: min(100%, calc(65svh * var(--photo-ratio, 1))); }
+.grand-dialog[data-mode="viewer"] .grand-oriented-photo > img { max-height: none; }
 .grand-dialog[data-mode="viewer"] h3 { font-size: 24px; margin: 8px 0 12px; }
 .grand-dialog[data-mode="viewer"] .grand-dialog-text { font-size: 18px; max-width: 650px; margin: auto; }
 body.grand-modal-open { overflow: hidden; }
 #treasure { min-height: 100vh; min-height: 100svh; outline: none; }
 @media (min-width: 768px) { .grand-heading { padding-top: 95px; padding-bottom: 65px; } .grand-map { margin-bottom: 100px; } .grand-moment { height: 165px; } .grand-yadira { padding-block: 90px; } .grand-album { column-gap: 38px; } .grand-phrases { margin-block: 60px; } }
 @media (max-width: 420px) { .grand-moment-button { gap: 15px; } .grand-moment-copy { max-width: 205px; } .grand-album { column-gap: 16px; } .grand-photo img { border-width: 4px; border-bottom-width: 13px; } .grand-photo figcaption { font-size: 14px; } }
+@media (max-width: 420px) { .grand-photo button[data-rotation] { padding: 4px 4px 13px; } }
 @media (prefers-reduced-motion: reduce) { .grand-reveal { transition: none; } .grand-reveal[data-pending] { opacity: 1; transform: none; } }
 
 .grand-moments { list-style: none; margin: 0; padding: 0; }

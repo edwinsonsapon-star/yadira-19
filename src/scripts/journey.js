@@ -165,24 +165,24 @@
     }
 
     scene.focus({ preventScroll: true });
-    await animate(scene, [{ opacity: 0 }, { opacity: 1 }], 1600);
-    await pause(350);
+    await animate(scene, [{ opacity: 0 }, { opacity: 1 }], 1100);
+    await pause(150);
     scene.dataset.phase = "narrative";
     for (const [index, phrase] of phrases.entries()) {
       scene.dataset.line = String(index + 1);
       line.dataset.emphasis = phrase.emphasis || "quiet";
       line.textContent = phrase.text;
-      await reveal(line, 550);
+      await reveal(line, 400);
       await readFor(phrase.hold);
-      await fade(line, 450);
+      await fade(line, 300);
       line.textContent = "";
     }
     narrative.hidden = true;
     port.hidden = false;
     scene.focus({ preventScroll: true });
     scene.dataset.phase = "searching";
-    await reveal(object, 950);
-    await animate(innerLight, [{ opacity: .18 }, { opacity: .95 }], 450);
+    await reveal(object, 700);
+    await animate(innerLight, [{ opacity: .18 }, { opacity: .95 }], 300);
     await animate(needle, [
       { transform: "rotate(-28deg)", offset: 0 },
       { transform: "rotate(83deg)", offset: .21 },
@@ -191,15 +191,15 @@
       { transform: "rotate(59deg)", offset: .78 },
       { transform: "rotate(39deg)", offset: .9 },
       { transform: "rotate(44deg)", offset: 1 },
-    ], 4300);
-    await animate(glow, [{ opacity: 0 }, { opacity: .85 }, { opacity: .3 }], 800);
+    ], 3200);
+    await animate(glow, [{ opacity: 0 }, { opacity: .85 }, { opacity: .3 }], 600);
     scene.dataset.phase = "found";
     status.textContent = "DESTINO ENCONTRADO";
-    await reveal(status, 500);
-    await pause(350);
-    await reveal(title, 700);
-    await pause(250);
-    await Promise.all([reveal(button, 600), animate(route, [{ opacity: 0 }, { opacity: 1 }], 600)]);
+    await reveal(status, 400);
+    await pause(150);
+    await reveal(title, 500);
+    await pause(150);
+    await Promise.all([reveal(button, 500), animate(route, [{ opacity: 0 }, { opacity: 1 }], 500)]);
     button.disabled = false;
     scene.dataset.phase = "ready";
 

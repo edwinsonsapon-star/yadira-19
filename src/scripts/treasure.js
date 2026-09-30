@@ -37,6 +37,13 @@
     image.alt = config.alt || "";
     image.hidden = true;
     image.decoding = "async";
+    if (config.rotation === -90 || config.rotation === 90) {
+      container.dataset.rotation = String(config.rotation);
+      image.style.setProperty("--photo-rotation", `${config.rotation}deg`);
+      image.addEventListener("load", () => {
+        container.style.setProperty("--photo-ratio", image.naturalHeight / image.naturalWidth);
+      }, { once: true });
+    }
     // Only two optional images, requested when their chapter is revealed.
     image.addEventListener("load", () => { image.hidden = false; if (fallback) fallback.hidden = true; }, { once: true });
     image.addEventListener("error", () => image.remove(), { once: true });
@@ -142,6 +149,7 @@
     birthday.hidden = true;
     birthday.tabIndex = -1;
     birthday.setAttribute("aria-labelledby", "treasure-birthday-title");
+    const birthdayPrelude = make("p", "treasure-birthday-prelude", content.birthday.prelude);
     const age = make("p", "treasure-age", content.birthday.age);
     const birthdayName = make("p", "treasure-birthday-name", content.birthday.name);
     const birthdayTitle = make("h2", "treasure-birthday-title", content.birthday.title);
@@ -158,6 +166,7 @@
     const instruction = make("p", "treasure-instruction", content.birthday.instruction);
     const wish = make("p", "treasure-wish");
     wish.setAttribute("role", "status");
+    const afterWish = make("p", "treasure-wish-followup");
     const fireworks = make("div", "treasure-fireworks");
     fireworks.setAttribute("aria-hidden", "true");
     // Three short bursts, 36 rays total. No canvas loop or recurring timers.
@@ -170,7 +179,7 @@
       }
       fireworks.append(bloom);
     }
-    birthday.append(fireworks, age, birthdayName, birthdayTitle, cake, instruction, wish);
+    birthday.append(fireworks, birthdayPrelude, age, birthdayName, birthdayTitle, cake, instruction, wish, afterWish);
 
     const ending = make("section", "treasure-section treasure-ending");
     ending.tabIndex = -1;
@@ -179,12 +188,15 @@
     const endingPhoto = make("div", "treasure-ending-portrait");
     const lines = make("div", "treasure-ending-lines");
     content.ending.lines.forEach(text => lines.append(make("p", "", text)));
+    const endingHighlight = make("div", "treasure-ending-highlight");
+    endingHighlight.append(make("strong", "", content.ending.highlight), make("span", "", content.ending.highlightDetail));
     const signature = make("footer", "treasure-signature", content.ending.signature);
     signature.append(make("strong", "", content.ending.author), make("small", "", content.ending.year));
     const restart = button("treasure-quiet treasure-restart", content.ending.restart);
     restart.addEventListener("click", () => { restart.disabled = true; window.location.reload(); }, { once: true });
-    ending.append(route(true), endingPhoto, lines, make("p", "treasure-ending-birthday", content.ending.birthday),
+    ending.append(route(true), endingPhoto, lines, endingHighlight,
       make("h2", "treasure-ending-name", content.ending.name), make("p", "treasure-ending-date", content.ending.date), signature,
+      make("p", "treasure-continuation-lead", content.ending.continuationLead),
       make("p", "treasure-continued", content.ending.continued), restart);
     scene.append(prelude, birthday, ending);
     host.append(scene);
@@ -270,10 +282,14 @@
       scene.dataset.phase = "birthday-entering";
       await hide(prelude, 850);
       prelude.hidden = true;
-      for (const el of [age, birthdayName, birthdayTitle, cake, instruction]) el.style.opacity = 0;
+      for (const el of [birthdayPrelude, age, birthdayName, birthdayTitle, cake, instruction]) el.style.opacity = 0;
       birthday.hidden = false;
       window.scrollTo({ top: 0, behavior: "instant" });
       birthday.focus({ preventScroll: true });
+      await show(birthdayPrelude, 700);
+      await wait(1600);
+      await hide(birthdayPrelude, 500);
+      birthdayPrelude.hidden = true;
       await show(age, 850);
       await show(birthdayName, 550);
       await show(birthdayTitle, 650);
@@ -299,6 +315,9 @@
       await show(wish, 450);
       scene.dataset.phase = "wish-saved";
       await wait(2300);
+      afterWish.textContent = content.birthday.afterWish;
+      await show(afterWish, 550);
+      await wait(2400);
       scene.dataset.phase = "ending-entering";
       await hide(birthday, 1100);
       birthday.hidden = true;
