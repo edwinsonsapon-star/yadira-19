@@ -8,7 +8,13 @@
 - **YADIRA-004 — The Treasure:** cierre completo.
 - **YADIRA-005 — Visual Polish:** assets integrados, pastel y fuegos artificiales, narrativa revisada; pendiente de aprobación visual.
 
-Los capítulos se conectan por eventos. Journey se monta dentro de `#experience` al recibir `yadira:opening-complete`; Our Grand Line se monta dentro de `#grand-line` al recibir `yadira:journey-start`. Treasure se monta dentro de `#treasure` al recibir `yadira:grand-line-complete`. No se utiliza audio, video, micrófono, WebGL, Three.js, dependencias de producción ni servicios externos. La galería funciona vacía hasta que se declaren fotografías en `content.js`.
+Los capítulos se conectan por eventos. Journey se monta dentro de `#experience` al recibir `yadira:opening-complete`; Our Grand Line se monta dentro de `#grand-line` al recibir `yadira:journey-start`. Treasure se monta dentro de `#treasure` al recibir `yadira:grand-line-complete`. No se utiliza video, micrófono, WebGL, Three.js, dependencias de producción ni servicios externos. La galería funciona vacía hasta que se declaren fotografías en `content.js`.
+
+## Música de fondo — YADIRA-010
+
+Pista local: **`audio/audio.mp3`**, utilizada sin conversión ni modificación. La ruta es relativa y compatible con GitHub Pages. `src/scripts/audio.js` inicia la reproducción solamente al pulsar **ABRIR REGALO**, sin esperar ni bloquear la transición. Aplica un fade-in de 2.5 segundos hasta un volumen de 0.25 y utiliza loop nativo.
+
+El pequeño control inferior derecho está deshabilitado hasta abrir el regalo; después permite pausar y reanudar sin reiniciar la pista, también dentro del visor. Los errores de reproducción son silenciosos y permiten reintentar con el control. **Volver al inicio** conserva la posición en sessionStorage si está disponible: la recarga pausa el audio y el siguiente **ABRIR REGALO** lo reanuda desde esa posición, nunca automáticamente al cargar.
 
 ## Abrir localmente
 
@@ -18,12 +24,13 @@ Abre `index.html` directamente o, desde la raíz, ejecuta con Python 3:
 python -m http.server 5173 --bind 127.0.0.1
 ```
 
-Visita <http://localhost:5173>. `npm start` ejecuta el mismo servidor; `npm run check` valida los cinco scripts con Node.js. Recarga para repetir la experiencia: no hay persistencia del progreso.
+Visita <http://localhost:5173>. `npm start` ejecuta el mismo servidor; `npm run check` valida los seis scripts con Node.js. Recarga para repetir la experiencia: no hay persistencia del progreso narrativo.
 
 ## Estructura
 
 ```text
 yadira/
+├── audio/audio.mp3               # Pista original protegida
 ├── fotos/.gitkeep                 # Carpeta protegida
 ├── onepiece/Logo one piece.png    # Logo original protegido
 ├── src/
@@ -32,12 +39,14 @@ yadira/
 │   │   ├── journey.js             # YADIRA-002, conservado
 │   │   ├── content.js             # Contenido editable de YADIRA-003 y YADIRA-004
 │   │   ├── grand-line.js          # Mapa, recuerdos, frases, galería y visor
-│   │   └── treasure.js            # Zoro, Wanted, carta, cumpleaños y final
+│   │   ├── treasure.js            # Zoro, Wanted, carta, cumpleaños y final
+│   │   └── audio.js               # Música, fade-in, loop y pausa/reanudación
 │   └── styles/
 │       ├── main.css               # YADIRA-001, intacto; tokens compartidos
 │       ├── journey.css            # Océano CSS del segundo capítulo
 │       ├── grand-line.css         # Mapa y álbum del tercer capítulo
-│       └── treasure.css           # Arte y escenas del cierre
+│       ├── treasure.css           # Arte y escenas del cierre
+│       └── audio.css              # Control discreto de música
 ├── qa/
 │   ├── verify-opening.cjs         # Regresión aislada de YADIRA-001
 │   ├── verify-journey.cjs          # Regresión de YADIRA-002

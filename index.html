@@ -11,13 +11,19 @@
     <link rel="stylesheet" href="src/styles/journey.css" />
     <link rel="stylesheet" href="src/styles/grand-line.css" />
     <link rel="stylesheet" href="src/styles/treasure.css" />
+    <link rel="stylesheet" href="src/styles/audio.css" />
     <script src="src/scripts/content.js" defer></script>
     <script src="src/scripts/main.js" defer></script>
     <script src="src/scripts/journey.js" defer></script>
     <script src="src/scripts/grand-line.js" defer></script>
     <script src="src/scripts/treasure.js" defer></script>
+    <script src="src/scripts/audio.js" defer></script>
   </head>
   <body>
+    <audio class="background-music" src="audio/audio.mp3" preload="none" loop hidden></audio>
+    <button class="music-control" type="button" aria-label="Reproducir música" title="La música se activa al abrir el regalo" data-playing="false" disabled>
+      <span aria-hidden="true">♪̸</span>
+    </button>
     <main class="stage" data-state="opening">
       <div class="atmosphere" aria-hidden="true">
         <div class="ambient-light"></div>

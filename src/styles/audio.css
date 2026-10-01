@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.music-control {
+  position: fixed;
+  z-index: 20;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--antique-gold);
+  border-radius: 50%;
+  background: var(--ocean-black);
+  color: var(--warm-ivory);
+  font-size: 22px;
+  line-height: 1;
+  opacity: .75;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.music-control:hover { opacity: 1; }
+.music-control:disabled { opacity: .35; cursor: default; }
+.music-control:focus-visible {
+  outline: 2px solid var(--warm-ivory);
+  outline-offset: 4px;
+  opacity: 1;
+}
