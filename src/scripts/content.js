@@ -22,8 +22,8 @@ window.YADIRA_CONTENT = {
     { title: "Nuestra primera cita", date: "", text: "", image: "fotos/primera-cita.jpeg", alt: "Nuestra primera cita" },
     { title: "Nuestro primer beso", date: "", text: "", image: "fotos/primer-beso.jpeg", alt: "Nuestro primer beso", rotation: -90 },
     {
-      title: "Una tarde cualquiera", date: "",
-      text: "Uno de mis recuerdos favoritos no necesitó un lugar extraordinario. Solo necesitó que usted estuviera conmigo.",
+      title: "Un día que siempre voy a recordar", date: "",
+      text: "Ese día pude pasar todo el día a su lado, y aunque quizá para alguien más podría parecer un día sencillo, para mí fue realmente especial. Poder compartir tantas horas con usted, hablar, reír, estar juntos y simplemente disfrutar de su compañía hizo que se convirtiera en uno de esos recuerdos que quiero guardar para siempre.",
       image: "fotos/momento-sencillo.jpeg", alt: "Una tarde cualquiera juntos"
     },
     {
